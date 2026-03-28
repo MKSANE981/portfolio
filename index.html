@@ -4,1374 +4,331 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mansour Kama Sane — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/nav.css"/>
 <style>
-/* ═══════════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  background: var(--bg);
-  color: var(--text);
-  transition: background .3s, color .3s;
-  overflow-x: hidden;
-}
-
-/* ═══════════════════════════════════════════════
-   THEME TOKENS — each profile has its own palette
-═══════════════════════════════════════════════ */
+/* ── Index-only overrides ── */
 :root {
-  --bg: #FAFAF8;
-  --bg2: #F2F0EB;
-  --bg3: #E8E5DF;
-  --text: #1A1916;
-  --text2: #5A584F;
-  --text3: #8A8880;
-  --border: rgba(26,25,22,.1);
-  --border2: rgba(26,25,22,.18);
-  --accent: #0E8A9E;
-  --accent2: #0D4C57;
-  --accent-bg: #E1F5EE;
-  --accent-mid: #9FE1CB;
-  --tag-bg: #E1F5EE;
-  --tag-text: #085041;
-  --hero-glow: radial-gradient(ellipse 700px 400px at 70% 50%, rgba(14,138,158,.08) 0%, transparent 70%);
-  --card-bg: #FFFFFF;
-  --nav-bg: rgba(250,250,248,.88);
-  --timeline-dot: #0E8A9E;
-  --btn-primary: #0D4C57;
-  --btn-primary-text: #FFFFFF;
-}
-[data-profile="ml"] {
-  --accent: #7C3AED;
-  --accent2: #4C1D95;
-  --accent-bg: #EDE9FE;
-  --accent-mid: #C4B5FD;
-  --tag-bg: #EDE9FE;
-  --tag-text: #3730A3;
-  --hero-glow: radial-gradient(ellipse 700px 400px at 70% 50%, rgba(124,58,237,.07) 0%, transparent 70%);
-  --timeline-dot: #7C3AED;
-  --btn-primary: #4C1D95;
-}
-[data-profile="de"] {
-  --accent: #059669;
-  --accent2: #065F46;
-  --accent-bg: #D1FAE5;
-  --accent-mid: #6EE7B7;
-  --tag-bg: #D1FAE5;
-  --tag-text: #065F46;
-  --hero-glow: radial-gradient(ellipse 700px 400px at 70% 50%, rgba(5,150,105,.07) 0%, transparent 70%);
-  --timeline-dot: #059669;
-  --btn-primary: #065F46;
-}
-[data-dark="true"] {
-  --bg: #111110;
-  --bg2: #1C1B19;
-  --bg3: #252420;
-  --text: #F0EDE8;
-  --text2: #A8A59E;
-  --text3: #6A6760;
-  --border: rgba(240,237,232,.08);
-  --border2: rgba(240,237,232,.15);
-  --card-bg: #1C1B19;
-  --nav-bg: rgba(17,17,16,.88);
+  --accent:    #0E8A9E;
+  --accent2:   #0D4C57;
+  --accentbg:  #E1F5EE;
+  --accentmid: #9FE1CB;
+  --tagtxt:    #085041;
+  --accent-rgb: 14,138,158;
 }
 
-/* ═══════════════════════════════════════════════
-   TYPOGRAPHY
-═══════════════════════════════════════════════ */
-h1, h2, h3, .display { font-family: 'Syne', sans-serif; }
+/* No navbar on landing */
+body { overflow-x: hidden; }
 
-/* ═══════════════════════════════════════════════
-   CURSOR DOT
-═══════════════════════════════════════════════ */
-.cursor {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--accent);
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform .1s, opacity .2s, width .2s, height .2s, background .3s;
-  mix-blend-mode: multiply;
-}
-.cursor-ring {
-  width: 32px; height: 32px; border-radius: 50%;
-  border: 1px solid var(--accent);
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform .18s ease-out, opacity .2s, border-color .3s;
-  opacity: .5;
-}
-
-/* ═══════════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════════ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 40px;
-  height: 60px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  transition: background .3s, border-color .3s;
-}
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -.5px;
-}
-.nav-logo em { color: var(--accent); font-style: normal; transition: color .3s; }
-
-.nav-profiles {
-  display: flex; align-items: center; gap: 4px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 4px;
-}
-.ptab {
-  padding: 6px 16px;
-  border-radius: 100px;
-  border: none;
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text2);
-  cursor: pointer;
-  transition: all .2s;
-  white-space: nowrap;
-  letter-spacing: .2px;
-}
-.ptab.active {
-  background: var(--btn-primary);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,.15);
-}
-
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.lang-toggle {
-  display: flex; align-items: center; gap: 2px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 3px;
-  overflow: hidden;
-}
-.lbtn {
-  padding: 4px 10px;
-  border: none; border-radius: 100px;
-  background: transparent;
-  font-size: 11px; font-weight: 500;
-  color: var(--text2); cursor: pointer;
-  transition: all .2s;
-}
-.lbtn.active { background: var(--bg3); color: var(--text); }
-.dark-toggle {
-  width: 32px; height: 32px; border-radius: 50%;
-  border: 1px solid var(--border2);
-  background: var(--bg2);
-  cursor: pointer; font-size: 14px;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
-  color: var(--text2);
-}
-.dark-toggle:hover { background: var(--bg3); }
-
-/* ═══════════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════════ */
-.hero {
+/* ── HERO LANDING ── */
+.landing-hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 100px 80px 60px;
-  gap: 60px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
   position: relative;
   overflow: hidden;
 }
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: var(--hero-glow);
-  transition: background .5s;
-  pointer-events: none;
-}
 
-/* subtle grid pattern */
-.hero::after {
+/* Grid background */
+.landing-hero::before {
   content: '';
   position: absolute; inset: 0;
   background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: .4;
+  background-size: 52px 52px;
+  opacity: .5;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
 }
 
-.hero-left { position: relative; z-index: 1; }
-
-.hero-kicker {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-mid);
-  border-radius: 100px;
-  padding: 5px 14px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--tag-text);
-  letter-spacing: .8px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  transition: background .3s, border-color .3s, color .3s;
+/* Glow blob */
+.landing-hero::after {
+  content: '';
+  position: absolute;
+  width: 700px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,138,158,.12) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: blobFloat 8s ease-in-out infinite;
 }
-.hero-kicker-dot {
-  width: 6px; height: 6px; border-radius: 50%;
+@keyframes blobFloat {
+  0%,100% { transform: translate(-50%,-50%) scale(1); }
+  50%      { transform: translate(-50%,-52%) scale(1.06); }
+}
+
+.landing-inner { position: relative; z-index: 1; max-width: 780px; }
+
+.landing-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 18px; border-radius: 100px;
+  background: var(--accentbg); border: 1px solid var(--accentmid);
+  font-size: 11px; font-weight: 500; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--tagtxt);
+  margin-bottom: 36px;
+  animation: fadeUp .7s ease both;
+}
+.badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
   background: var(--accent);
-  animation: blink 2s infinite;
-  transition: background .3s;
+  animation: pulse 2.5s infinite;
 }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-.hero-name {
+.landing-name {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(42px, 5vw, 68px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -2px;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 800; line-height: .95;
+  letter-spacing: -.04em;
   color: var(--text);
+  margin-bottom: 20px;
+  animation: fadeUp .7s .1s ease both;
+}
+.landing-name em {
+  color: var(--accent); font-style: normal;
+}
+
+.landing-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(16px, 2vw, 20px); font-weight: 300;
+  color: var(--text2); line-height: 1.7;
+  max-width: 560px; margin: 0 auto 56px;
+  animation: fadeUp .7s .2s ease both;
+}
+
+/* ── PROFILE CARDS ── */
+.profile-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; width: 100%; max-width: 920px;
+  animation: fadeUp .7s .3s ease both;
+}
+
+.pcard {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 36px 28px 32px;
+  text-align: left;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform .3s cubic-bezier(.34,1.2,.64,1),
+              box-shadow .3s ease,
+              border-color .3s ease;
+}
+.pcard::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--pc-color);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s ease;
+}
+.pcard:hover { transform: translateY(-8px); box-shadow: 0 20px 56px rgba(0,0,0,.08); }
+.pcard:hover { border-color: var(--pc-color); }
+.pcard:hover::before { transform: scaleX(1); }
+
+.pcard-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: var(--pc-bg);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px; font-size: 26px;
+  transition: transform .3s ease;
+}
+.pcard:hover .pcard-icon { transform: scale(1.1) rotate(-4deg); }
+
+.pcard-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--pc-color);
   margin-bottom: 8px;
 }
-.hero-name span { color: var(--accent); transition: color .3s; }
-
-.hero-role {
+.pcard-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 600;
-  color: var(--text2);
-  margin-bottom: 20px;
-  letter-spacing: -.3px;
+  font-size: 20px; font-weight: 700;
+  color: var(--text); line-height: 1.2;
+  margin-bottom: 14px; letter-spacing: -.02em;
 }
+.pcard-desc {
+  font-size: 13px; font-weight: 300;
+  color: var(--text2); line-height: 1.7;
+  margin-bottom: 22px;
+}
+.pcard-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+.pcard-tag {
+  font-size: 10px; font-weight: 500; letter-spacing: .3px;
+  padding: 3px 10px; border-radius: 100px;
+  background: var(--pc-bg); color: var(--pc-color);
+}
+.pcard-cta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--pc-color);
+  transition: gap .2s ease;
+}
+.pcard:hover .pcard-cta { gap: 12px; }
 
-.hero-bio {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--text2);
-  line-height: 1.75;
-  max-width: 480px;
-  margin-bottom: 36px;
-}
+/* Card variants */
+.pcard-eco  { --pc-color: #0E8A9E; --pc-bg: #E1F5EE; }
+.pcard-ml   { --pc-color: #7C3AED; --pc-bg: #EDE9FE; }
+.pcard-de   { --pc-color: #059669; --pc-bg: #D1FAE5; }
 
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn {
-  padding: 12px 28px;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all .2s;
-  text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  border: none;
-  letter-spacing: .1px;
-}
-.btn-fill {
-  background: var(--btn-primary);
-  color: #fff;
-}
-.btn-fill:hover { opacity: .85; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.15); }
-.btn-outline {
-  background: transparent;
-  border: 1px solid var(--border2);
-  color: var(--text);
-}
-.btn-outline:hover { background: var(--bg2); transform: translateY(-1px); }
-
-/* ── hero right: abstract visual ── */
-.hero-visual {
+/* ── BOTTOM BAR ── */
+.landing-footer {
   position: relative; z-index: 1;
-  display: flex; align-items: center; justify-content: center;
+  margin-top: 64px;
+  display: flex; align-items: center; gap: 32px;
+  animation: fadeUp .7s .4s ease both;
 }
-.hero-card-stack { position: relative; width: 340px; height: 340px; }
+.lf-link {
+  font-size: 13px; color: var(--text3); font-weight: 400;
+  display: flex; align-items: center; gap: 6px;
+  transition: color .2s ease;
+}
+.lf-link:hover { color: var(--accent); }
+.lf-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--border2); }
 
-.hcard {
-  position: absolute;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-  transition: transform .5s cubic-bezier(.34,1.56,.64,1), background .3s, border-color .3s;
-  box-shadow: 0 4px 24px rgba(0,0,0,.06);
-}
-.hcard-1 {
-  width: 280px;
-  top: 0; right: 0;
-  transform: rotate(6deg);
-  z-index: 1;
-}
-.hcard-2 {
-  width: 260px;
-  top: 60px; left: 0;
-  transform: rotate(-4deg);
-  z-index: 2;
-}
-.hcard-3 {
-  width: 270px;
-  bottom: 0; left: 50%; transform: translateX(-50%) rotate(1deg);
-  z-index: 3;
-}
-.hero-card-stack:hover .hcard-1 { transform: rotate(8deg) translateY(-8px); }
-.hero-card-stack:hover .hcard-2 { transform: rotate(-6deg) translateY(6px); }
-.hero-card-stack:hover .hcard-3 { transform: translateX(-50%) rotate(2deg) translateY(-4px); }
-
-.hcard-label {
-  font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--text3); margin-bottom: 10px;
-}
-.hcard-metric {
-  font-family: 'Syne', sans-serif;
-  font-size: 32px; font-weight: 800;
-  color: var(--accent); margin-bottom: 4px;
-  transition: color .3s;
-}
-.hcard-desc { font-size: 12px; color: var(--text2); }
-.hcard-bar {
-  height: 4px; border-radius: 2px;
-  background: var(--bg3); margin-top: 14px;
-  overflow: hidden;
-}
-.hcard-fill {
-  height: 100%; border-radius: 2px;
-  background: var(--accent);
-  transition: background .3s;
-}
-
-/* ═══════════════════════════════════════════════
-   STATS BAND
-═══════════════════════════════════════════════ */
-.stats-band {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  transition: background .3s, border-color .3s;
-}
-.stat-item {
-  padding: 32px 40px;
-  border-right: 1px solid var(--border);
-  transition: border-color .3s;
-}
-.stat-item:last-child { border-right: none; }
-.stat-val {
-  font-family: 'Syne', sans-serif;
-  font-size: 36px; font-weight: 800;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 6px;
-  transition: color .3s;
-}
-.stat-lbl { font-size: 13px; color: var(--text3); font-weight: 300; }
-
-/* ═══════════════════════════════════════════════
-   SECTION COMMON
-═══════════════════════════════════════════════ */
-.section {
-  padding: 100px 80px;
-  transition: background .3s;
-}
-.section-alt { background: var(--bg2); }
-
-.section-header { margin-bottom: 56px; }
-.section-eyebrow {
-  font-size: 11px; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 2px; color: var(--accent);
-  margin-bottom: 12px; transition: color .3s;
-}
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 800;
-  color: var(--text);
-  letter-spacing: -1px;
-  line-height: 1.1;
-}
-
-/* ═══════════════════════════════════════════════
-   PROJECTS GRID
-═══════════════════════════════════════════════ */
-.proj-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.proj-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px;
-  cursor: pointer;
-  transition: transform .2s, box-shadow .2s, border-color .2s, background .3s;
-  position: relative;
-  overflow: hidden;
-}
-.proj-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s, background .3s;
-}
-.proj-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); border-color: var(--border2); }
-.proj-card:hover::before { transform: scaleX(1); }
-
-.proj-number {
-  font-family: 'Syne', sans-serif;
-  font-size: 48px; font-weight: 800;
-  color: var(--bg3);
-  line-height: 1;
-  margin-bottom: 16px;
-  transition: color .3s;
-}
-.proj-type {
-  display: inline-block;
-  font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
-  padding: 3px 10px; border-radius: 4px;
-  background: var(--tag-bg); color: var(--tag-text);
-  margin-bottom: 12px;
-  transition: background .3s, color .3s;
-}
-.proj-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px; font-weight: 700;
-  color: var(--text); margin-bottom: 10px;
-  line-height: 1.25;
-  letter-spacing: -.3px;
-}
-.proj-desc { font-size: 13px; color: var(--text2); line-height: 1.65; margin-bottom: 20px; font-weight: 300; }
-
-.proj-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-.pill {
-  font-size: 11px; padding: 3px 10px; border-radius: 100px;
-  border: 1px solid var(--border);
-  color: var(--text3);
-  transition: border-color .2s;
-}
-
-.proj-arrow {
-  position: absolute; top: 24px; right: 24px;
-  width: 32px; height: 32px; border-radius: 50%;
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; color: var(--text3);
-  transition: all .2s;
-}
-.proj-card:hover .proj-arrow {
-  background: var(--accent); border-color: var(--accent); color: #fff;
-}
-
-/* ═══════════════════════════════════════════════
-   SKILLS
-═══════════════════════════════════════════════ */
-.skills-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: start;
-}
-.skills-nav { position: sticky; top: 80px; }
-.skill-nav-item {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px; font-weight: 500;
-  color: var(--text2); cursor: pointer;
-  transition: color .2s;
+/* ── TOP MINI NAV ── */
+.index-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px; padding: 0 var(--gap-xl);
   display: flex; align-items: center; justify-content: space-between;
+  background: transparent;
+  transition: background .3s, box-shadow .3s;
 }
-.skill-nav-item.active { color: var(--accent); }
-.skill-nav-item.active::after {
-  content: '';
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
-  transition: background .3s;
+.index-nav.scrolled {
+  background: rgba(249,248,245,.9);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 20px rgba(0,0,0,.06);
+  border-bottom: 1px solid var(--border);
+}
+[data-dark="true"] .index-nav.scrolled { background: rgba(17,16,8,.9); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.skills-content-area { display: flex; flex-direction: column; gap: 32px; }
-.skill-block { display: none; }
-.skill-block.visible { display: block; }
-
-.skill-block-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 22px; font-weight: 700;
-  color: var(--text); margin-bottom: 20px;
-  letter-spacing: -.3px;
-}
-.skill-pills-lg { display: flex; flex-wrap: wrap; gap: 10px; }
-.pill-lg {
-  padding: 8px 18px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  font-size: 13px; font-weight: 400;
-  color: var(--text);
-  transition: all .2s;
-  cursor: default;
-}
-.pill-lg:hover {
-  border-color: var(--accent-mid);
-  background: var(--accent-bg);
-  color: var(--tag-text);
-}
-
-/* ═══════════════════════════════════════════════
-   EXPERIENCE TIMELINE
-═══════════════════════════════════════════════ */
-.timeline { position: relative; }
-.tl-line {
-  position: absolute; top: 16px; bottom: 0; left: 0;
-  width: 1px; background: var(--border);
-  transition: background .3s;
-}
-.tl-item {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 40px;
-  padding: 0 0 56px 32px;
-  position: relative;
-}
-.tl-item::before {
-  content: '';
-  position: absolute;
-  left: -4px; top: 8px;
-  width: 9px; height: 9px; border-radius: 50%;
-  background: var(--timeline-dot);
-  border: 2px solid var(--bg);
-  transition: background .3s, border-color .3s;
-  box-shadow: 0 0 0 3px var(--accent-bg);
-}
-.tl-date { font-size: 12px; color: var(--text3); padding-top: 4px; font-weight: 300; }
-.tl-company {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px; font-weight: 700;
-  color: var(--text); margin-bottom: 4px; letter-spacing: -.2px;
-}
-.tl-role { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 12px; transition: color .3s; }
-.tl-desc { font-size: 13px; color: var(--text2); line-height: 1.7; font-weight: 300; }
-.tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-.tl-tag {
-  font-size: 10px; padding: 2px 8px; border-radius: 4px;
-  background: var(--tag-bg); color: var(--tag-text);
-  font-weight: 500; letter-spacing: .3px;
-  transition: background .3s, color .3s;
-}
-
-/* ═══════════════════════════════════════════════
-   EDUCATION
-═══════════════════════════════════════════════ */
-.edu-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.edu-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  transition: background .3s, border-color .3s;
-}
-.edu-year {
-  font-size: 11px; color: var(--accent); font-weight: 500;
-  letter-spacing: .5px; margin-bottom: 10px;
-  transition: color .3s;
-}
-.edu-school {
-  font-family: 'Syne', sans-serif;
-  font-size: 15px; font-weight: 700;
-  color: var(--text); margin-bottom: 4px; letter-spacing: -.2px;
-}
-.edu-degree { font-size: 12px; color: var(--text2); font-weight: 300; line-height: 1.5; }
-
-/* ═══════════════════════════════════════════════
-   CONTACT
-═══════════════════════════════════════════════ */
-.contact-section {
-  padding: 100px 80px;
-  background: var(--btn-primary);
-  transition: background .3s;
-  position: relative;
-  overflow: hidden;
-}
-.contact-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-.contact-inner { position: relative; z-index: 1; max-width: 600px; }
-.contact-eyebrow { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,.5); margin-bottom: 16px; }
-.contact-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 800; color: #fff;
-  letter-spacing: -1px; line-height: 1.1;
-  margin-bottom: 20px;
-}
-.contact-sub { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 40px; font-weight: 300; }
-.contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
-.contact-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 11px 22px; border-radius: 100px;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.2);
-  color: #fff; font-size: 13px; font-weight: 500;
-  text-decoration: none; cursor: pointer;
-  transition: all .2s;
-}
-.contact-link:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
-
-/* ═══════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════ */
-footer {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 28px 80px;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 12px; color: var(--text3);
-  transition: background .3s, border-color .3s;
-}
-
-/* ═══════════════════════════════════════════════
-   ANIMATIONS
-═══════════════════════════════════════════════ */
-.fade-in {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@keyframes float {
-  0%,100% { transform: rotate(6deg) translateY(0); }
-  50% { transform: rotate(6deg) translateY(-10px); }
-}
-.hcard-1 { animation: float 5s ease-in-out infinite; }
-
-/* ═══════════════════════════════════════════════
-   HIDDEN STATES
-═══════════════════════════════════════════════ */
-.eco-only, .ml-only, .de-only { display: none; }
-[data-profile="eco"] .eco-only { display: block; }
-[data-profile="ml"]  .ml-only  { display: block; }
-[data-profile="de"]  .de-only  { display: block; }
-
-/* grid display fix */
-[data-profile="eco"] .eco-grid { display: grid !important; }
-[data-profile="ml"]  .ml-grid  { display: grid !important; }
-[data-profile="de"]  .de-grid  { display: grid !important; }
-.eco-grid, .ml-grid, .de-grid { display: none; }
-
-/* ═══════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════ */
+/* ── MOBILE ── */
 @media (max-width: 900px) {
-  nav { padding: 0 20px; }
-  .nav-profiles { display: none; }
-  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-  .hero-visual { display: none; }
-  .stats-band { grid-template-columns: repeat(2, 1fr); }
-  .section { padding: 60px 24px; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .skills-layout { grid-template-columns: 1fr; }
-  .tl-item { grid-template-columns: 1fr; gap: 8px; }
-  .edu-grid { grid-template-columns: 1fr; }
-  .contact-section { padding: 60px 24px; }
-  footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  .profile-cards { grid-template-columns: 1fr; max-width: 440px; }
+  .landing-footer { flex-wrap: wrap; justify-content: center; }
+  .index-nav { padding: 0 20px; }
+}
+@media (max-width: 600px) {
+  .landing-name { font-size: 44px; }
 }
 </style>
 </head>
 <body>
 
-<!-- Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- ══════════════════════════════════════════
-     NAV
-══════════════════════════════════════════ -->
-<nav>
-  <div class="nav-logo">MK<em>.</em>Sane</div>
-
-  <div class="nav-profiles">
-    <button class="ptab active" id="tab-eco" onclick="setProfile('eco')">
-      <span data-fr="Économiste" data-en="Economist">Économiste</span>
-    </button>
-    <button class="ptab" id="tab-ml" onclick="setProfile('ml')">ML / AI</button>
-    <button class="ptab" id="tab-de" onclick="setProfile('de')">Data Engineer</button>
+<!-- NAV -->
+<nav class="index-nav" id="indexNav">
+  <div class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    <span>MK.Sane</span>
   </div>
-
   <div class="nav-right">
     <div class="lang-toggle">
-      <button class="lbtn active" id="lbtn-fr" onclick="setLang('fr')">FR</button>
-      <button class="lbtn" id="lbtn-en" onclick="setLang('en')">EN</button>
+      <button class="lbtn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lbtn" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
-    <button class="dark-toggle" id="darkBtn" onclick="toggleDark()" title="Dark mode">☽</button>
+    <button class="icon-btn" id="darkBtn" onclick="toggleDark()">☽</button>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════
-     HERO
-══════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-left fade-in">
+<!-- HERO -->
+<section class="landing-hero">
+  <div class="landing-inner">
 
-    <!-- ECO -->
-    <div class="eco-only">
-      <div class="hero-kicker">
-        <span class="hero-kicker-dot"></span>
-        <span data-fr="Ingénieur Statisticien Économiste" data-en="Statistical Engineer & Economist">Ingénieur Statisticien Économiste</span>
-      </div>
-      <h1 class="hero-name">Mansour<br><span>Kama</span> Sane</h1>
-      <p class="hero-role" data-fr="Économiste quantitatif · Data Scientist" data-en="Quantitative Economist · Data Scientist">Économiste quantitatif · Data Scientist</p>
-      <p class="hero-bio" data-fr="Ingénieur diplômé ENSAI & ENSAE, spécialisé en modélisation économique, évaluation de politiques publiques et économétrie appliquée. Co-auteur d'un working paper en économie du développement. 4 ans d'expérience." data-en="ENSAI & ENSAE engineering graduate specialising in economic modelling, public policy evaluation and applied econometrics. Co-author of a development economics working paper. 4 years of experience.">Ingénieur diplômé ENSAI & ENSAE, spécialisé en modélisation économique, évaluation de politiques publiques et économétrie appliquée. Co-auteur d'un working paper en économie du développement. 4 ans d'expérience.</p>
+    <div class="landing-badge">
+      <div class="badge-dot"></div>
+      <span data-fr="Ingénieur diplômé ENSAI & ENSAE · Rennes, France" data-en="ENSAI & ENSAE Engineering Graduate · Rennes, France">Ingénieur diplômé ENSAI & ENSAE · Rennes, France</span>
     </div>
 
-    <!-- ML -->
-    <div class="ml-only">
-      <div class="hero-kicker">
-        <span class="hero-kicker-dot"></span>
-        <span>ML Engineer · AI Engineer</span>
-      </div>
-      <h1 class="hero-name">Mansour<br><span>Kama</span> Sane</h1>
-      <p class="hero-role" data-fr="ML Engineer · Développeur Agents IA" data-en="ML Engineer · AI Agents Developer">ML Engineer · Développeur Agents IA</p>
-      <p class="hero-bio" data-fr="Fine-tuning de LLM, architecture multi-agents, pipelines RAG. 86,4% d'accuracy sur classification documentaire vs 74,1% pour GPT-4o-mini. Industrialisation Docker/CI-CD chez Little John (insurtech)." data-en="LLM fine-tuning, multi-agent architecture, RAG pipelines. 86.4% accuracy on document classification vs 74.1% for GPT-4o-mini. Docker/CI-CD industrialisation at Little John (insurtech).">Fine-tuning de LLM, architecture multi-agents, pipelines RAG. 86,4% d'accuracy sur classification documentaire vs 74,1% pour GPT-4o-mini. Industrialisation Docker/CI-CD chez Little John (insurtech).</p>
-    </div>
+    <h1 class="landing-name">
+      Mansour<br><em>Kama</em> Sane
+    </h1>
 
-    <!-- DE -->
-    <div class="de-only">
-      <div class="hero-kicker">
-        <span class="hero-kicker-dot"></span>
-        <span>Data Engineer · Agentic AI</span>
-      </div>
-      <h1 class="hero-name">Mansour<br><span>Kama</span> Sane</h1>
-      <p class="hero-role" data-fr="Data Engineer · Développeur IA" data-en="Data Engineer · AI Developer">Data Engineer · Développeur IA</p>
-      <p class="hero-bio" data-fr="Pipelines ETL/ELT Azure end-to-end, orchestration Ray, base vectorielle ChromaDB, agents IA Pydantic. Temps de traitement réduit de 1 semaine à moins d'1h. Industrialisation Docker/CI-CD chez Little John." data-en="End-to-end Azure ETL/ELT pipelines, Ray orchestration, ChromaDB vector store, Pydantic AI agents. Processing time reduced from 1 week to under 1 hour. Docker/CI-CD industrialisation at Little John.">Pipelines ETL/ELT Azure end-to-end, orchestration Ray, base vectorielle ChromaDB, agents IA Pydantic. Temps de traitement réduit de 1 semaine à moins d'1h. Industrialisation Docker/CI-CD chez Little John.</p>
-    </div>
+    <p class="landing-sub" data-fr="Trois expertises, une rigueur. Économiste quantitatif, ML/AI Engineer et Data Engineer. Choisissez le profil qui correspond à votre besoin." data-en="Three expertises, one rigour. Quantitative economist, ML/AI Engineer and Data Engineer. Choose the profile that matches your need.">
+      Trois expertises, une rigueur. Économiste quantitatif, ML/AI Engineer et Data Engineer.<br>Choisissez le profil qui correspond à votre besoin.
+    </p>
 
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-fill" data-fr="Voir les projets" data-en="View projects">Voir les projets</a>
-      <a href="#contact" class="btn btn-outline" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
-    </div>
-  </div>
+    <!-- PROFILE CARDS -->
+    <div class="profile-cards">
 
-  <!-- Hero visual — animated metric cards -->
-  <div class="hero-visual fade-in" style="transition-delay:.2s">
-    <div class="hero-card-stack">
-
-      <!-- ECO cards -->
-      <div class="hcard hcard-1 eco-only" style="display:block!important">
-        <div class="hcard-label" data-fr="Working paper" data-en="Working paper">Working paper</div>
-        <div class="hcard-metric">AIDS</div>
-        <div class="hcard-desc" data-fr="Modèle consommation — Sénégal" data-en="Consumption model — Senegal">Modèle consommation — Sénégal</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:75%"></div></div>
-      </div>
-      <div class="hcard hcard-2 eco-only" style="display:block!important">
-        <div class="hcard-label">TOEIC</div>
-        <div class="hcard-metric">870</div>
-        <div class="hcard-desc">English B2</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:87%"></div></div>
-      </div>
-      <div class="hcard hcard-3 eco-only" style="display:block!important">
-        <div class="hcard-label" data-fr="Expérience" data-en="Experience">Expérience</div>
-        <div class="hcard-metric">4 ans</div>
-        <div class="hcard-desc" data-fr="Recherche + secteur privé" data-en="Research + private sector">Recherche + secteur privé</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:60%"></div></div>
-      </div>
-
-      <!-- ML cards -->
-      <div class="hcard hcard-1 ml-only">
-        <div class="hcard-label">Accuracy — Qwen3-0.6B</div>
-        <div class="hcard-metric">86.4%</div>
-        <div class="hcard-desc" data-fr="vs 74.1% GPT-4o-mini" data-en="vs 74.1% GPT-4o-mini">vs 74.1% GPT-4o-mini</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:86%"></div></div>
-      </div>
-      <div class="hcard hcard-2 ml-only">
-        <div class="hcard-label" data-fr="Gain inférence" data-en="Inference gain">Gain inférence</div>
-        <div class="hcard-metric">2.1×</div>
-        <div class="hcard-desc">1.76s vs 3.78s/doc</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:100%"></div></div>
-      </div>
-      <div class="hcard hcard-3 ml-only">
-        <div class="hcard-label" data-fr="Modèle" data-en="Model">Modèle</div>
-        <div class="hcard-metric">0.6B</div>
-        <div class="hcard-desc" data-fr="Params — 15× plus léger" data-en="Params — 15× lighter">Params — 15× plus léger</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:45%"></div></div>
-      </div>
-
-      <!-- DE cards -->
-      <div class="hcard hcard-1 de-only">
-        <div class="hcard-label" data-fr="Tâches automatisées" data-en="Tasks automated">Tâches automatisées</div>
-        <div class="hcard-metric">80%</div>
-        <div class="hcard-desc" data-fr="Pipeline Azure end-to-end" data-en="Azure end-to-end pipeline">Pipeline Azure end-to-end</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:80%"></div></div>
-      </div>
-      <div class="hcard hcard-2 de-only">
-        <div class="hcard-label" data-fr="Traitement docs" data-en="Doc processing">Traitement docs</div>
-        <div class="hcard-metric">&lt;1h</div>
-        <div class="hcard-desc" data-fr="vs 1 semaine auparavant" data-en="vs 1 week before">vs 1 semaine auparavant</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:98%"></div></div>
-      </div>
-      <div class="hcard hcard-3 de-only">
-        <div class="hcard-label">ANSD</div>
-        <div class="hcard-metric">+30%</div>
-        <div class="hcard-desc" data-fr="Efficacité processus RH" data-en="HR process efficiency">Efficacité processus RH</div>
-        <div class="hcard-bar"><div class="hcard-fill" style="width:65%"></div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     STATS BAND
-══════════════════════════════════════════ -->
-<div class="stats-band fade-in">
-
-  <div class="stat-item eco-only" style="display:block!important">
-    <div class="stat-val">4</div>
-    <div class="stat-lbl" data-fr="années d'expérience" data-en="years of experience">années d'expérience</div>
-  </div>
-  <div class="stat-item eco-only" style="display:block!important">
-    <div class="stat-val">2</div>
-    <div class="stat-lbl" data-fr="enquêtes EHCVM analysées" data-en="EHCVM surveys analysed">enquêtes EHCVM analysées</div>
-  </div>
-  <div class="stat-item eco-only" style="display:block!important">
-    <div class="stat-val">870</div>
-    <div class="stat-lbl">TOEIC</div>
-  </div>
-  <div class="stat-item eco-only" style="display:block!important">
-    <div class="stat-val">5</div>
-    <div class="stat-lbl" data-fr="missions / projets clés" data-en="key missions / projects">missions / projets clés</div>
-  </div>
-
-  <div class="stat-item ml-only">
-    <div class="stat-val">86.4%</div>
-    <div class="stat-lbl" data-fr="accuracy classification" data-en="classification accuracy">accuracy classification</div>
-  </div>
-  <div class="stat-item ml-only">
-    <div class="stat-val">2.1×</div>
-    <div class="stat-lbl" data-fr="gain vitesse inférence" data-en="inference speed gain">gain vitesse inférence</div>
-  </div>
-  <div class="stat-item ml-only">
-    <div class="stat-val">&gt;80%</div>
-    <div class="stat-lbl" data-fr="gain temps de traitement" data-en="processing time gain">gain temps de traitement</div>
-  </div>
-  <div class="stat-item ml-only">
-    <div class="stat-val">15×</div>
-    <div class="stat-lbl" data-fr="modèle plus léger que GPT" data-en="lighter model than GPT">modèle plus léger que GPT</div>
-  </div>
-
-  <div class="stat-item de-only">
-    <div class="stat-val">80%</div>
-    <div class="stat-lbl" data-fr="tâches automatisées" data-en="tasks automated">tâches automatisées</div>
-  </div>
-  <div class="stat-item de-only">
-    <div class="stat-val">&lt;1h</div>
-    <div class="stat-lbl" data-fr="traitement vs 1 semaine" data-en="processing vs 1 week">traitement vs 1 semaine</div>
-  </div>
-  <div class="stat-item de-only">
-    <div class="stat-val">+30%</div>
-    <div class="stat-lbl" data-fr="efficacité ANSD" data-en="ANSD efficiency">efficacité ANSD</div>
-  </div>
-  <div class="stat-item de-only">
-    <div class="stat-val">4</div>
-    <div class="stat-lbl" data-fr="années d'expérience" data-en="years of experience">années d'expérience</div>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════
-     PROJECTS
-══════════════════════════════════════════ -->
-<section class="section" id="projects">
-  <div class="section-header fade-in">
-    <div class="section-eyebrow" data-fr="Réalisations" data-en="Work">Réalisations</div>
-    <h2 class="section-title" data-fr="Projets & missions" data-en="Projects & assignments">Projets & missions</h2>
-  </div>
-
-  <!-- ECO projects -->
-  <div class="proj-grid eco-grid fade-in">
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">01</div>
-      <div class="proj-type" data-fr="Working Paper" data-en="Working Paper">Working Paper</div>
-      <div class="proj-title" data-fr="Consommation ménages & pauvreté au Sénégal" data-en="Household consumption & poverty in Senegal">Consommation ménages & pauvreté au Sénégal</div>
-      <div class="proj-desc" data-fr="Modèle AIDS (Almost Ideal Demand System) sur les EHCVM 2018–2022. Collaboration avec Prof. Abdoul Sam (Ohio State Univ.) & Dr. Fofana (ENSAE Dakar). Élasticités-prix, analyse distributive par quintile, implications politiques pour la TVA et les subventions alimentaires." data-en="AIDS model on EHCVM 2018–2022. Collaboration with Prof. Abdoul Sam (Ohio State Univ.) & Dr. Fofana (ENSAE Dakar). Price elasticities, distributional analysis by income quintile, policy implications for VAT and food subsidies.">Modèle AIDS (Almost Ideal Demand System) sur les EHCVM 2018–2022. Collaboration avec Prof. Abdoul Sam (Ohio State Univ.) & Dr. Fofana (ENSAE Dakar). Élasticités-prix, analyse distributive par quintile, implications politiques pour la TVA et les subventions alimentaires.</div>
-      <div class="proj-pills"><span class="pill">Stata</span><span class="pill">R</span><span class="pill">SUR</span><span class="pill">AIDS</span><span class="pill">Econométrie</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">02</div>
-      <div class="proj-type" data-fr="Recherche — CREST" data-en="Research — CREST">Recherche — CREST</div>
-      <div class="proj-title" data-fr="Offre de compétences développeurs" data-en="Developer skill supply analysis">Offre de compétences développeurs</div>
-      <div class="proj-desc" data-fr="Analyse de l'évolution des compétences des développeurs via les enquêtes Stack Overflow 2017–2023. LDA pour classifier les compétences, modélisation compétences/salaires. Meilleure note de promotion ENSAI." data-en="Analysis of developer skill evolution via Stack Overflow surveys 2017–2023. LDA for skill classification, skills/wages modelling. Highest grade of the ENSAI cohort.">Analyse de l'évolution des compétences des développeurs via les enquêtes Stack Overflow 2017–2023. LDA pour classifier les compétences, modélisation compétences/salaires. Meilleure note de promotion ENSAI.</div>
-      <div class="proj-pills"><span class="pill">Python</span><span class="pill">NLP/LDA</span><span class="pill">Stata</span><span class="pill">Pandas</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">03</div>
-      <div class="proj-type" data-fr="Secteur privé" data-en="Private sector">Secteur privé</div>
-      <div class="proj-title" data-fr="Modélisation statistique — Little John" data-en="Statistical modelling — Little John">Modélisation statistique — Little John</div>
-      <div class="proj-desc" data-fr="Sélection et validation de modèles de classification documentaire. Contrôle qualité des données, documentation analytique, traduction des besoins métiers en spécifications. Bonnes pratiques de reproductibilité." data-en="Document classification model selection and validation. Data quality control, analytical documentation, translating business requirements into specs. Reproducibility best practices.">Sélection et validation de modèles de classification documentaire. Contrôle qualité des données, documentation analytique, traduction des besoins métiers en spécifications. Bonnes pratiques de reproductibilité.</div>
-      <div class="proj-pills"><span class="pill">Scikit-learn</span><span class="pill">Statsmodels</span><span class="pill">Python</span><span class="pill">Git</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">04</div>
-      <div class="proj-type" data-fr="Études d'impact" data-en="Impact studies">Études d'impact</div>
-      <div class="proj-title" data-fr="Consulting statistique — STATINFO" data-en="Statistical consulting — STATINFO">Consulting statistique — STATINFO</div>
-      <div class="proj-desc" data-fr="Études d'impact pour clients institutionnels et internationaux au Sénégal. Analyses économétriques (panel, diff-in-diff), rédaction de notes techniques, collecte terrain." data-en="Impact studies for institutional and international clients in Senegal. Econometric analyses (panel, diff-in-diff), technical note drafting, field data collection.">Études d'impact pour clients institutionnels et internationaux au Sénégal. Analyses économétriques (panel, diff-in-diff), rédaction de notes techniques, collecte terrain.</div>
-      <div class="proj-pills"><span class="pill">Stata</span><span class="pill">R</span><span class="pill">Diff-in-diff</span><span class="pill">Panel</span></div>
-    </div>
-  </div>
-
-  <!-- ML projects -->
-  <div class="proj-grid ml-grid fade-in">
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">01</div>
-      <div class="proj-type">Fine-tuning SLM</div>
-      <div class="proj-title" data-fr="Classification documentaire — Qwen3-0.6B" data-en="Document classification — Qwen3-0.6B">Classification documentaire — Qwen3-0.6B</div>
-      <div class="proj-desc" data-fr="Fine-tuning supervisé de Skywork-Reward-V2-Qwen3-0.6B sur corpus assurance (kbis, sinistres, FIC, RIB, passeports…). 86,4% vs 74,1% GPT-4o-mini. Modèle 15× plus petit, 2,1× plus rapide. Publié sur HuggingFace Little John Hub." data-en="Supervised fine-tuning of Skywork-Reward-V2-Qwen3-0.6B on insurance corpus (company certificates, claims, bank details, passports…). 86.4% vs 74.1% GPT-4o-mini. Model 15× smaller, 2.1× faster. Published on Little John HuggingFace Hub.">Fine-tuning supervisé de Skywork-Reward-V2-Qwen3-0.6B sur corpus assurance (kbis, sinistres, FIC, RIB, passeports…). 86,4% vs 74,1% GPT-4o-mini. Modèle 15× plus petit, 2,1× plus rapide. Publié sur HuggingFace Little John Hub.</div>
-      <div class="proj-pills"><span class="pill">PyTorch</span><span class="pill">HuggingFace</span><span class="pill">SFT</span><span class="pill">JSONL</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">02</div>
-      <div class="proj-type" data-fr="Agents IA" data-en="AI Agents">Agents IA</div>
-      <div class="proj-title" data-fr="Architecture multi-agents & Pydantic AI" data-en="Multi-agent architecture & Pydantic AI">Architecture multi-agents & Pydantic AI</div>
-      <div class="proj-desc" data-fr="Templates YAML traduisant les besoins courtiers en specs analytiques. Schémas Pydantic par module. Crews d'agents orchestrés via Ray. Traitement réduit de 1 semaine à moins d'1h. 80% du temps courtier dédié au conseil." data-en="YAML templates translating broker needs into analytical specs. Pydantic schemas per module. Agent crews orchestrated via Ray. Processing reduced from 1 week to under 1 hour. 80% of broker time dedicated to advisory.">Templates YAML traduisant les besoins courtiers en specs analytiques. Schémas Pydantic par module. Crews d'agents orchestrés via Ray. Traitement réduit de 1 semaine à moins d'1h. 80% du temps courtier dédié au conseil.</div>
-      <div class="proj-pills"><span class="pill">Pydantic AI</span><span class="pill">Ray</span><span class="pill">Ray Serve</span><span class="pill">FastAPI</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">03</div>
-      <div class="proj-type">RAG Pipeline</div>
-      <div class="proj-title" data-fr="Pipeline RAG & base vectorielle" data-en="RAG pipeline & vector store">Pipeline RAG & base vectorielle</div>
-      <div class="proj-desc" data-fr="ChromaDB + embeddings OpenAI. Architecture fallback multi-modèles (GPT-4o-mini / Mistral / Groq). Recherche sémantique sur documents d'assurance. Industrialisation Docker + CI/CD + FastAPI." data-en="ChromaDB + OpenAI embeddings. Multi-model fallback architecture (GPT-4o-mini / Mistral / Groq). Semantic search across insurance documents. Docker + CI/CD + FastAPI industrialisation.">ChromaDB + embeddings OpenAI. Architecture fallback multi-modèles (GPT-4o-mini / Mistral / Groq). Recherche sémantique sur documents d'assurance. Industrialisation Docker + CI/CD + FastAPI.</div>
-      <div class="proj-pills"><span class="pill">ChromaDB</span><span class="pill">OpenAI API</span><span class="pill">Docker</span><span class="pill">CI/CD</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">04</div>
-      <div class="proj-type" data-fr="NLP / Recherche" data-en="NLP / Research">NLP / Recherche</div>
-      <div class="proj-title" data-fr="Offre de compétences — CREST" data-en="Skill supply analysis — CREST">Offre de compétences — CREST</div>
-      <div class="proj-desc" data-fr="LDA sur enquêtes Stack Overflow 2017–2023. Preprocessing, pipelines reproductibles. Modélisation économétrique compétences/salaires. Meilleure note de promotion." data-en="LDA on Stack Overflow surveys 2017–2023. Preprocessing, reproducible pipelines. Econometric modelling of skills/wages relationship. Highest cohort grade.">LDA sur enquêtes Stack Overflow 2017–2023. Preprocessing, pipelines reproductibles. Modélisation économétrique compétences/salaires. Meilleure note de promotion.</div>
-      <div class="proj-pills"><span class="pill">Python</span><span class="pill">NLP/LDA</span><span class="pill">Scikit-learn</span><span class="pill">Pandas</span></div>
-    </div>
-  </div>
-
-  <!-- DE projects -->
-  <div class="proj-grid de-grid fade-in">
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">01</div>
-      <div class="proj-type">ETL / Azure</div>
-      <div class="proj-title" data-fr="Pipeline ingestion documentaire end-to-end" data-en="End-to-end document ingestion pipeline">Pipeline ingestion documentaire end-to-end</div>
-      <div class="proj-desc" data-fr="Azure Document Intelligence (OCR) → classification → extraction champs métier → payload JSON en Azure Blob Storage. Agents Pydantic AI pour structurer les sorties. Monitoring Logfire, conformité RGPD. 80% des tâches manuelles automatisées." data-en="Azure Document Intelligence (OCR) → classification → business field extraction → JSON payload in Azure Blob Storage. Pydantic AI agents for structured outputs. Logfire monitoring, GDPR compliance. 80% of manual tasks automated.">Azure Document Intelligence (OCR) → classification → extraction champs métier → payload JSON en Azure Blob Storage. Agents Pydantic AI pour structurer les sorties. Monitoring Logfire, conformité RGPD. 80% des tâches manuelles automatisées.</div>
-      <div class="proj-pills"><span class="pill">Azure</span><span class="pill">OCR</span><span class="pill">Pydantic AI</span><span class="pill">Logfire</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">02</div>
-      <div class="proj-type" data-fr="Orchestration" data-en="Orchestration">Orchestration</div>
-      <div class="proj-title" data-fr="Pipeline templating & Ray" data-en="Templating pipeline & Ray">Pipeline templating & Ray</div>
-      <div class="proj-desc" data-fr="Templates YAML (fiche client, GED, fleet auto). Crews d'agents IA parallèles via Ray. Exposition services ML avec Ray Serve. FastAPI. Traitement de 1 semaine à moins d'1h — gain &gt;80%." data-en="YAML templates (client file, DMS, vehicle fleet). Parallel AI agent crews via Ray. ML services exposed with Ray Serve. FastAPI. Processing from 1 week to under 1 hour — &gt;80% gain.">Templates YAML (fiche client, GED, fleet auto). Crews d'agents IA parallèles via Ray. Exposition services ML avec Ray Serve. FastAPI. Traitement de 1 semaine à moins d'1h — gain &gt;80%.</div>
-      <div class="proj-pills"><span class="pill">Ray</span><span class="pill">Ray Serve</span><span class="pill">FastAPI</span><span class="pill">Docker</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">03</div>
-      <div class="proj-type">RAG / Vector</div>
-      <div class="proj-title" data-fr="Base vectorielle & RAG multi-modèles" data-en="Vector store & multi-model RAG">Base vectorielle & RAG multi-modèles</div>
-      <div class="proj-desc" data-fr="ChromaDB + embeddings OpenAI. Fallback GPT-4o-mini / Mistral / Groq. Fine-tuning SLM Qwen3-0.6B pour classification : accuracy 86,4%, inférence 2× plus rapide. Industrialisation CI/CD." data-en="ChromaDB + OpenAI embeddings. Fallback GPT-4o-mini / Mistral / Groq. SLM fine-tuning Qwen3-0.6B for classification: 86.4% accuracy, 2× faster inference. CI/CD industrialisation.">ChromaDB + embeddings OpenAI. Fallback GPT-4o-mini / Mistral / Groq. Fine-tuning SLM Qwen3-0.6B pour classification : accuracy 86,4%, inférence 2× plus rapide. Industrialisation CI/CD.</div>
-      <div class="proj-pills"><span class="pill">ChromaDB</span><span class="pill">HuggingFace</span><span class="pill">PySpark</span><span class="pill">Git</span></div>
-    </div>
-    <div class="proj-card" onclick="window.open('https://github.com/MKSANE981','_blank')">
-      <div class="proj-arrow">↗</div>
-      <div class="proj-number">04</div>
-      <div class="proj-type" data-fr="Plateforme" data-en="Platform">Plateforme</div>
-      <div class="proj-title" data-fr="Plateforme RH — ANSD Sénégal" data-en="HR platform — ANSD Senegal">Plateforme RH — ANSD Sénégal</div>
-      <div class="proj-desc" data-fr="Développement d'une plateforme de gestion RH/recrutements pour l'Agence Nationale de Statistique du Sénégal. +30% d'efficacité des processus. Exploitation de bases administratives volumineuses." data-en="HR/recruitment management platform for Senegal's National Statistics Agency. +30% process efficiency. Exploitation of large administrative databases.">Développement d'une plateforme de gestion RH/recrutements pour l'Agence Nationale de Statistique du Sénégal. +30% d'efficacité des processus. Exploitation de bases administratives volumineuses.</div>
-      <div class="proj-pills"><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Stata</span><span class="pill">R</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SKILLS
-══════════════════════════════════════════ -->
-<section class="section section-alt" id="skills">
-  <div class="section-header fade-in">
-    <div class="section-eyebrow" data-fr="Expertise" data-en="Expertise">Expertise</div>
-    <h2 class="section-title" data-fr="Compétences" data-en="Skills">Compétences</h2>
-  </div>
-  <div class="skills-layout fade-in">
-    <div class="skills-nav">
-      <div class="skill-nav-item active" id="snav-0" onclick="showSkill(0)" data-fr="Méthodologies" data-en="Methods">Méthodologies</div>
-      <div class="skill-nav-item" id="snav-1" onclick="showSkill(1)" data-fr="Outils & Langages" data-en="Tools & Languages">Outils & Langages</div>
-      <div class="skill-nav-item" id="snav-2" onclick="showSkill(2)" data-fr="Domaines métier" data-en="Business domains">Domaines métier</div>
-    </div>
-    <div class="skills-content-area">
-
-      <!-- BLOCK 0 — METHODS -->
-      <div class="skill-block visible" id="sb-0">
-        <!-- ECO -->
-        <div class="eco-only" style="display:block!important">
-          <div class="skill-block-title" data-fr="Méthodes statistiques & économétriques" data-en="Statistical & econometric methods">Méthodes statistiques & économétriques</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Données panel</span><span class="pill-lg">Séries temporelles</span>
-            <span class="pill-lg">Régression linéaire & généralisée</span><span class="pill-lg">Probit / Logit</span>
-            <span class="pill-lg">Évaluation d'impact</span><span class="pill-lg">Inférence causale</span>
-            <span class="pill-lg">Modèle AIDS</span><span class="pill-lg">SUR</span>
-            <span class="pill-lg">Microsimulation</span><span class="pill-lg">Statistique bayésienne</span>
-            <span class="pill-lg">Méta-analyse</span><span class="pill-lg">NLP appliqué</span>
-          </div>
+      <!-- Économiste -->
+      <div class="pcard pcard-eco" onclick="location.href='pages/eco.html'">
+        <div class="pcard-icon">📊</div>
+        <div class="pcard-label" data-fr="Profil 1" data-en="Profile 1">Profil 1</div>
+        <div class="pcard-title" data-fr="Ingénieur Statisticien Économiste" data-en="Statistical Engineer & Economist">Ingénieur Statisticien Économiste</div>
+        <p class="pcard-desc" data-fr="Modélisation économique, évaluation de politiques publiques, économétrie appliquée. Co-auteur d'un working paper sur la pauvreté et la consommation des ménages au Sénégal (Ohio State Univ.)." data-en="Economic modelling, public policy evaluation, applied econometrics. Co-author of a working paper on poverty and household consumption in Senegal (Ohio State Univ.).">Modélisation économique, évaluation de politiques publiques, économétrie appliquée. Co-auteur d'un working paper sur la pauvreté au Sénégal (Ohio State Univ.).</p>
+        <div class="pcard-tags">
+          <span class="pcard-tag">Stata</span>
+          <span class="pcard-tag">R</span>
+          <span class="pcard-tag">Python</span>
+          <span class="pcard-tag">Modèle AIDS</span>
+          <span class="pcard-tag">Panel</span>
         </div>
-        <!-- ML -->
-        <div class="ml-only">
-          <div class="skill-block-title" data-fr="Méthodes ML / IA" data-en="ML / AI methods">Méthodes ML / IA</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Fine-tuning supervisé (SFT)</span><span class="pill-lg">RAG</span>
-            <span class="pill-lg">Prompt Engineering</span><span class="pill-lg">NLP / LDA</span>
-            <span class="pill-lg">Classification & évaluation croisée</span>
-            <span class="pill-lg">Orchestration multi-agents</span>
-            <span class="pill-lg">MLOps</span><span class="pill-lg">Recherche reproductible</span>
-            <span class="pill-lg">AGILE (Scrum)</span>
-          </div>
-        </div>
-        <!-- DE -->
-        <div class="de-only">
-          <div class="skill-block-title" data-fr="Méthodes Data Engineering" data-en="Data Engineering methods">Méthodes Data Engineering</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">ETL / ELT Pipelines</span><span class="pill-lg">DataOps</span>
-            <span class="pill-lg">Orchestration d'agents</span><span class="pill-lg">Traitement parallèle</span>
-            <span class="pill-lg">AGILE (Scrum, Kanban)</span>
-            <span class="pill-lg">Ingestion multi-sources</span><span class="pill-lg">Conformité RGPD</span>
-          </div>
-        </div>
+        <div class="pcard-cta" data-fr="Voir le profil →" data-en="View profile →">Voir le profil →</div>
       </div>
 
-      <!-- BLOCK 1 — TOOLS -->
-      <div class="skill-block" id="sb-1">
-        <div class="eco-only" style="display:block!important">
-          <div class="skill-block-title" data-fr="Outils & langages" data-en="Tools & languages">Outils & langages</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Stata</span><span class="pill-lg">R</span><span class="pill-lg">Python</span>
-            <span class="pill-lg">SQL</span><span class="pill-lg">Pandas</span><span class="pill-lg">Scikit-learn</span>
-            <span class="pill-lg">R Shiny</span><span class="pill-lg">PySpark</span><span class="pill-lg">Git / GitHub</span>
-          </div>
+      <!-- ML / AI -->
+      <div class="pcard pcard-ml" onclick="location.href='pages/ml.html'">
+        <div class="pcard-icon">🤖</div>
+        <div class="pcard-label" data-fr="Profil 2" data-en="Profile 2">Profil 2</div>
+        <div class="pcard-title">ML Engineer &amp; AI Engineer</div>
+        <p class="pcard-desc" data-fr="Fine-tuning SLM open-source (86.4% accuracy, 2.1× plus rapide que GPT-4o-mini), architecture multi-agents Pydantic AI + Ray, pipeline RAG Azure. 1 an d'expérience." data-en="Open-source SLM fine-tuning (86.4% accuracy, 2.1× faster than GPT-4o-mini), Pydantic AI + Ray multi-agent architecture, Azure RAG pipeline. 1 year of experience.">Fine-tuning SLM (86.4% accuracy, 2.1× plus rapide que GPT), architecture multi-agents, pipeline RAG Azure. Modèle 15× plus léger et déployé en souverain.</p>
+        <div class="pcard-tags">
+          <span class="pcard-tag">PyTorch</span>
+          <span class="pcard-tag">HuggingFace</span>
+          <span class="pcard-tag">Pydantic AI</span>
+          <span class="pcard-tag">RAG</span>
+          <span class="pcard-tag">Fine-tuning</span>
         </div>
-        <div class="ml-only">
-          <div class="skill-block-title" data-fr="Stack technique" data-en="Technical stack">Stack technique</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Python</span><span class="pill-lg">PyTorch</span><span class="pill-lg">TensorFlow</span>
-            <span class="pill-lg">HuggingFace</span><span class="pill-lg">Pydantic AI</span><span class="pill-lg">Ray</span>
-            <span class="pill-lg">Azure Blob Storage</span><span class="pill-lg">Azure Doc. Intelligence</span>
-            <span class="pill-lg">ChromaDB</span><span class="pill-lg">OpenAI API</span>
-            <span class="pill-lg">Docker</span><span class="pill-lg">CI/CD</span><span class="pill-lg">FastAPI</span>
-            <span class="pill-lg">Logfire</span><span class="pill-lg">SQL</span><span class="pill-lg">PySpark</span>
-            <span class="pill-lg">Scikit-learn</span><span class="pill-lg">Git</span>
-          </div>
-        </div>
-        <div class="de-only">
-          <div class="skill-block-title" data-fr="Stack technique" data-en="Technical stack">Stack technique</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Python</span><span class="pill-lg">SQL</span><span class="pill-lg">PySpark</span>
-            <span class="pill-lg">Azure Blob Storage</span><span class="pill-lg">Azure Doc. Intelligence</span>
-            <span class="pill-lg">ChromaDB</span><span class="pill-lg">Ray</span><span class="pill-lg">Ray Serve</span>
-            <span class="pill-lg">Docker</span><span class="pill-lg">CI/CD</span><span class="pill-lg">FastAPI</span>
-            <span class="pill-lg">REST API</span><span class="pill-lg">HuggingFace</span>
-            <span class="pill-lg">Airflow*</span><span class="pill-lg">Databricks*</span><span class="pill-lg">Git</span>
-          </div>
-        </div>
+        <div class="pcard-cta" data-fr="Voir le profil →" data-en="View profile →">Voir le profil →</div>
       </div>
 
-      <!-- BLOCK 2 — DOMAINS -->
-      <div class="skill-block" id="sb-2">
-        <div class="eco-only" style="display:block!important">
-          <div class="skill-block-title" data-fr="Domaines d'application" data-en="Application domains">Domaines d'application</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Politiques publiques</span><span class="pill-lg">Protection sociale</span>
-            <span class="pill-lg">Économie de la santé</span><span class="pill-lg">Marché du travail</span>
-            <span class="pill-lg">Analyse distributive</span><span class="pill-lg">Pauvreté & inégalités</span>
-            <span class="pill-lg">Statistique publique</span><span class="pill-lg">UEMOA / Afrique subsaharienne</span>
-          </div>
+      <!-- Data Engineer -->
+      <div class="pcard pcard-de" onclick="location.href='pages/de.html'">
+        <div class="pcard-icon">⚙️</div>
+        <div class="pcard-label" data-fr="Profil 3" data-en="Profile 3">Profil 3</div>
+        <div class="pcard-title">Data Engineer</div>
+        <p class="pcard-desc" data-fr="Pipelines ETL/ELT Azure end-to-end, orchestration Ray, base vectorielle ChromaDB, industrialisation Docker/CI-CD. Traitement documentaire réduit de 1 semaine à moins d'1 heure." data-en="Azure end-to-end ETL/ELT pipelines, Ray orchestration, ChromaDB vector store, Docker/CI-CD industrialisation. Document processing reduced from 1 week to under 1 hour.">Pipelines ETL Azure end-to-end, orchestration Ray, base vectorielle ChromaDB, Docker/CI-CD. Traitement réduit de 1 semaine à moins d'1 heure.</p>
+        <div class="pcard-tags">
+          <span class="pcard-tag">Azure</span>
+          <span class="pcard-tag">Ray</span>
+          <span class="pcard-tag">ChromaDB</span>
+          <span class="pcard-tag">Docker</span>
+          <span class="pcard-tag">FastAPI</span>
         </div>
-        <div class="ml-only">
-          <div class="skill-block-title" data-fr="Domaines métier" data-en="Business domains">Domaines métier</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Assurance</span><span class="pill-lg">Finance</span>
-            <span class="pill-lg">Insurtech</span><span class="pill-lg">Automatisation documentaire</span>
-            <span class="pill-lg">Politiques publiques</span><span class="pill-lg">Recherche académique</span>
-          </div>
-        </div>
-        <div class="de-only">
-          <div class="skill-block-title" data-fr="Domaines métier" data-en="Business domains">Domaines métier</div>
-          <div class="skill-pills-lg">
-            <span class="pill-lg">Assurance</span><span class="pill-lg">Finance</span>
-            <span class="pill-lg">Insurtech</span><span class="pill-lg">Automatisation documentaire</span>
-            <span class="pill-lg">Statistique publique</span><span class="pill-lg">Administration</span>
-          </div>
-        </div>
+        <div class="pcard-cta" data-fr="Voir le profil →" data-en="View profile →">Voir le profil →</div>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- ══════════════════════════════════════════
-     EXPERIENCE
-══════════════════════════════════════════ -->
-<section class="section" id="experience">
-  <div class="section-header fade-in">
-    <div class="section-eyebrow" data-fr="Parcours" data-en="Career">Parcours</div>
-    <h2 class="section-title" data-fr="Expérience professionnelle" data-en="Professional experience">Expérience professionnelle</h2>
-  </div>
-  <div class="timeline fade-in">
-    <div class="tl-line"></div>
-
-    <div class="tl-item">
-      <div class="tl-date" data-fr="Avr. 2025 — Présent" data-en="Apr. 2025 — Present">Avr. 2025 — Présent</div>
-      <div>
-        <div class="tl-company">Little John</div>
-        <div class="tl-role eco-only" style="display:block!important" data-fr="Data Scientist — Modélisation statistique" data-en="Data Scientist — Statistical Modelling">Data Scientist — Modélisation statistique</div>
-        <div class="tl-role ml-only" data-fr="ML Engineer & AI Agents Developer — CDI" data-en="ML Engineer & AI Agents Developer — Permanent">ML Engineer & AI Agents Developer — CDI</div>
-        <div class="tl-role de-only" data-fr="Data & ML Engineer — CDI" data-en="Data & ML Engineer — Permanent">Data & ML Engineer — CDI</div>
-        <div class="tl-desc" data-fr="Insurtech créant le premier espace de travail IA pour courtiers d'assurance. Fine-tuning SLM, architecture multi-agents, pipeline RAG Azure, industrialisation Docker/CI-CD." data-en="Insurtech building the first AI workspace for insurance brokers. SLM fine-tuning, multi-agent architecture, Azure RAG pipeline, Docker/CI-CD industrialisation.">Insurtech créant le premier espace de travail IA pour courtiers d'assurance. Fine-tuning SLM, architecture multi-agents, pipeline RAG Azure, industrialisation Docker/CI-CD.</div>
-        <div class="tl-tags"><span class="tl-tag">Python</span><span class="tl-tag">Azure</span><span class="tl-tag">Pydantic AI</span><span class="tl-tag">Ray</span><span class="tl-tag">Docker</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date" data-fr="Juil. — Août 2024" data-en="Jul. — Aug. 2024">Juil. — Août 2024</div>
-      <div>
-        <div class="tl-company">CREST (ENSAI)</div>
-        <div class="tl-role eco-only" style="display:block!important" data-fr="Stagiaire Recherche — Économétrie & NLP" data-en="Research Intern — Econometrics & NLP">Stagiaire Recherche — Économétrie & NLP</div>
-        <div class="tl-role ml-only" data-fr="Stagiaire Recherche — Machine Learning" data-en="Research Intern — Machine Learning">Stagiaire Recherche — Machine Learning</div>
-        <div class="tl-role de-only" data-fr="Stagiaire Recherche — Data & NLP" data-en="Research Intern — Data & NLP">Stagiaire Recherche — Data & NLP</div>
-        <div class="tl-desc" data-fr="Analyse de l'offre de compétences des développeurs (Stack Overflow 2017–2023). LDA, modélisation économétrique. Meilleure note de promotion." data-en="Analysis of developer skill supply (Stack Overflow 2017–2023). LDA, econometric modelling. Highest grade of the cohort.">Analyse de l'offre de compétences des développeurs (Stack Overflow 2017–2023). LDA, modélisation économétrique. Meilleure note de promotion.</div>
-        <div class="tl-tags"><span class="tl-tag">Python</span><span class="tl-tag">NLP/LDA</span><span class="tl-tag">Stata</span><span class="tl-tag">Git</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date" data-fr="Sept. 2019 — Oct. 2021" data-en="Sep. 2019 — Oct. 2021">Sept. 2019 — Oct. 2021</div>
-      <div>
-        <div class="tl-company">ANSD — Sénégal</div>
-        <div class="tl-role eco-only" style="display:block!important" data-fr="Chargé d'études statistiques" data-en="Statistical Studies Officer">Chargé d'études statistiques</div>
-        <div class="tl-role ml-only" data-fr="Statisticien & Développeur Plateforme" data-en="Statistician & Platform Developer">Statisticien & Développeur Plateforme</div>
-        <div class="tl-role de-only" data-fr="Développeur Plateforme & Statisticien" data-en="Platform Developer & Statistician">Développeur Plateforme & Statisticien</div>
-        <div class="tl-desc" data-fr="Agence nationale de statistique du Sénégal. Plateforme RH (+30% efficacité), exploitation de bases administratives, production d'indicateurs." data-en="Senegal's national statistics agency. HR platform (+30% efficiency), administrative database exploitation, indicator production.">Agence nationale de statistique du Sénégal. Plateforme RH (+30% efficacité), exploitation de bases administratives, production d'indicateurs.</div>
-        <div class="tl-tags"><span class="tl-tag">Python</span><span class="tl-tag">SQL</span><span class="tl-tag">Stata</span><span class="tl-tag">R</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date" data-fr="Jan. — Juil. 2021" data-en="Jan. — Jul. 2021">Jan. — Juil. 2021</div>
-      <div>
-        <div class="tl-company">STATINFO Consulting</div>
-        <div class="tl-role eco-only" style="display:block!important" data-fr="Consultant statistiques" data-en="Statistics Consultant">Consultant statistiques</div>
-        <div class="tl-role ml-only" data-fr="Consultant statistiques" data-en="Statistics Consultant">Consultant statistiques</div>
-        <div class="tl-role de-only" data-fr="Consultant statistiques" data-en="Statistics Consultant">Consultant statistiques</div>
-        <div class="tl-desc" data-fr="Études d'impact pour clients institutionnels au Sénégal. Économétrie appliquée (panel, diff-in-diff), rédaction de notes techniques." data-en="Impact studies for institutional clients in Senegal. Applied econometrics (panel, diff-in-diff), technical report drafting.">Études d'impact pour clients institutionnels au Sénégal. Économétrie appliquée (panel, diff-in-diff), rédaction de notes techniques.</div>
-        <div class="tl-tags"><span class="tl-tag">Stata</span><span class="tl-tag">R</span><span class="tl-tag">Python</span></div>
-      </div>
+    <!-- Footer links -->
+    <div class="landing-footer">
+      <a href="mailto:mansoursanneh98@gmail.com" class="lf-link">✉ mansoursanneh98@gmail.com</a>
+      <div class="lf-sep"></div>
+      <a href="https://www.linkedin.com/in/mansour-kama-sane-307549177" target="_blank" class="lf-link">in LinkedIn</a>
+      <div class="lf-sep"></div>
+      <a href="https://github.com/MKSANE981" target="_blank" class="lf-link">⌥ GitHub</a>
+      <div class="lf-sep"></div>
+      <span class="lf-link">+33 7 51 17 03 13</span>
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     EDUCATION
-══════════════════════════════════════════ -->
-<section class="section section-alt" id="education">
-  <div class="section-header fade-in">
-    <div class="section-eyebrow" data-fr="Formation" data-en="Education">Formation</div>
-    <h2 class="section-title" data-fr="Diplômes & parcours académique" data-en="Degrees & academic background">Diplômes & parcours académique</h2>
-  </div>
-  <div class="edu-grid fade-in">
-    <div class="edu-card">
-      <div class="edu-year">2023 — 2025</div>
-      <div class="edu-school">ENSAI, Rennes — France</div>
-      <div class="edu-degree" data-fr="Diplôme Ingénieur Data Scientist — Niveau 7 RNCP. Spécialisation : Modélisation éco. & Santé. Machine learning avancé, Économétrie, Évaluation de programmes." data-en="Data Science Engineering Degree — Level 7 RNCP. Track: Eco Modelling & Health. Advanced ML, Econometrics, Programme evaluation.">Diplôme Ingénieur Data Scientist — Niveau 7 RNCP. Spécialisation : Modélisation éco. & Santé. Machine learning avancé, Économétrie, Évaluation de programmes.</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2021 — 2023</div>
-      <div class="edu-school">ENSAE, Dakar — Sénégal</div>
-      <div class="edu-degree" data-fr="Diplôme Ingénieur Statisticien Économiste. Modélisation statistique avancée, Initiation ML & Big Data, Économétrie appliquée, Politiques économiques." data-en="Statistical & Economics Engineering Degree. Advanced statistical modelling, Intro to ML & Big Data, Applied econometrics, Economic policy.">Diplôme Ingénieur Statisticien Économiste. Modélisation statistique avancée, Initiation ML & Big Data, Économétrie appliquée, Politiques économiques.</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2019 — 2020</div>
-      <div class="edu-school">Univ. Cheikh Anta Diop, Dakar</div>
-      <div class="edu-degree" data-fr="Licence Analyse Statistique & Financière." data-en="BSc Statistical, Economic & Financial Analysis.">Licence Analyse Statistique & Financière.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     CONTACT
-══════════════════════════════════════════ -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner fade-in">
-    <div class="contact-eyebrow" data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</div>
-    <h2 class="contact-title" data-fr="Ouvert aux opportunités" data-en="Open to opportunities">Ouvert aux opportunités</h2>
-    <p class="contact-sub" data-fr="Disponible pour des missions en Data Science, ML Engineering, Économétrie ou Data Engineering. N'hésitez pas à me contacter." data-en="Available for Data Science, ML Engineering, Econometrics or Data Engineering roles. Feel free to reach out.">Disponible pour des missions en Data Science, ML Engineering, Économétrie ou Data Engineering. N'hésitez pas à me contacter.</p>
-    <div class="contact-links">
-      <a href="mailto:mansoursanneh98@gmail.com" class="contact-link">✉ mansoursanneh98@gmail.com</a>
-      <a href="https://www.linkedin.com/in/mansour-kama-sane-307549177" target="_blank" class="contact-link">in LinkedIn</a>
-      <a href="https://github.com/MKSANE981" target="_blank" class="contact-link">⌥ GitHub</a>
-      <span class="contact-link">📞 +33 7 51 17 03 13</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
-<footer>
-  <span>© 2025 Mansour Kama Sane · Rennes, France</span>
-  <span>ENSAI · ENSAE · Little John</span>
-</footer>
-
-<!-- ══════════════════════════════════════════
-     SCRIPT
-══════════════════════════════════════════ -->
+<script src="js/lang.js"></script>
+<script src="js/animations.js"></script>
 <script>
-/* ─── State ─── */
-let profile = 'eco';
-let lang = 'fr';
-let dark = false;
-
-/* ─── Profile switch ─── */
-function setProfile(p) {
-  profile = p;
-  document.body.setAttribute('data-profile', p);
-
-  ['eco','ml','de'].forEach(x => {
-    document.getElementById('tab-'+x).classList.remove('active');
-  });
-  document.getElementById('tab-'+p).classList.add('active');
-
-  applyLang();
-}
-
-/* ─── Language ─── */
-function setLang(l) {
-  lang = l;
-  document.getElementById('lbtn-fr').classList.toggle('active', l==='fr');
-  document.getElementById('lbtn-en').classList.toggle('active', l==='en');
-  document.documentElement.setAttribute('lang', l);
-  applyLang();
-}
-
-function applyLang() {
-  document.querySelectorAll('[data-fr]').forEach(el => {
-    const txt = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr');
-    if (txt && el.children.length === 0) el.textContent = txt;
-  });
-  // Handle stat vals that may have children-only elements - skip
-}
-
-/* ─── Dark mode ─── */
-function toggleDark() {
-  dark = !dark;
-  document.body.setAttribute('data-dark', dark ? 'true' : 'false');
-  document.getElementById('darkBtn').textContent = dark ? '☀' : '☽';
-}
-
-/* ─── Skills nav ─── */
-function showSkill(i) {
-  for (let n = 0; n < 3; n++) {
-    document.getElementById('snav-'+n).classList.toggle('active', n===i);
-    const sb = document.getElementById('sb-'+n);
-    sb.classList.toggle('visible', n===i);
-  }
-}
-
-/* ─── Cursor ─── */
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx=0, my=0, rx=0, ry=0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx+'px';
-  cursor.style.top = my+'px';
-});
-
-function animRing() {
-  rx += (mx-rx) * .12;
-  ry += (my-ry) * .12;
-  ring.style.left = rx+'px';
-  ring.style.top = ry+'px';
-  requestAnimationFrame(animRing);
-}
-animRing();
-
-document.querySelectorAll('a,button,.proj-card,.ptab').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '14px';
-    cursor.style.height = '14px';
-    ring.style.width = '48px';
-    ring.style.height = '48px';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '8px';
-    cursor.style.height = '8px';
-    ring.style.width = '32px';
-    ring.style.height = '32px';
-  });
-});
-
-/* ─── Fade-in on scroll ─── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: .1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-/* ─── URL param: ?profil=ml etc ─── */
-const params = new URLSearchParams(location.search);
-const pParam = params.get('profil') || params.get('profile');
-if (pParam && ['eco','ml','de'].includes(pParam)) setProfile(pParam);
-else setProfile('eco');
-
-const lParam = params.get('lang');
-if (lParam === 'en') setLang('en');
+  // Nav scroll effect on landing
+  const nav = document.getElementById('indexNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
 </script>
 </body>
 </html>
