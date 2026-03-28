@@ -1,0 +1,142 @@
+<svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg" width="480" height="420">
+  <defs>
+    <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </radialGradient>
+    <radialGradient id="nodeGrad2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C4B5FD"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </radialGradient>
+    <filter id="nodeglow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="10" y="10" width="460" height="400" rx="20" fill="#2D1B69" opacity=".12" stroke="#7C3AED" stroke-width=".5" stroke-opacity=".2"/>
+
+  <!-- Layer labels -->
+  <text x="75"  y="36" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="#7C3AED" opacity=".6">INPUT</text>
+  <text x="200" y="36" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="#7C3AED" opacity=".6">HIDDEN 1</text>
+  <text x="310" y="36" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="#7C3AED" opacity=".6">HIDDEN 2</text>
+  <text x="415" y="36" text-anchor="middle" font-family="'DM Mono', monospace" font-size="9" fill="#7C3AED" opacity=".6">OUTPUT</text>
+
+  <!-- Connections layer 1→2 (thin, low opacity) -->
+  <g stroke="#7C3AED" stroke-width=".6" stroke-opacity=".12" fill="none">
+    <line x1="75" y1="90"  x2="200" y2="80"/>
+    <line x1="75" y1="90"  x2="200" y2="140"/>
+    <line x1="75" y1="90"  x2="200" y2="200"/>
+    <line x1="75" y1="90"  x2="200" y2="260"/>
+    <line x1="75" y1="90"  x2="200" y2="320"/>
+    <line x1="75" y1="170" x2="200" y2="80"/>
+    <line x1="75" y1="170" x2="200" y2="140"/>
+    <line x1="75" y1="170" x2="200" y2="200"/>
+    <line x1="75" y1="170" x2="200" y2="260"/>
+    <line x1="75" y1="170" x2="200" y2="320"/>
+    <line x1="75" y1="250" x2="200" y2="80"/>
+    <line x1="75" y1="250" x2="200" y2="140"/>
+    <line x1="75" y1="250" x2="200" y2="200"/>
+    <line x1="75" y1="250" x2="200" y2="260"/>
+    <line x1="75" y1="250" x2="200" y2="320"/>
+    <line x1="75" y1="330" x2="200" y2="80"/>
+    <line x1="75" y1="330" x2="200" y2="140"/>
+    <line x1="75" y1="330" x2="200" y2="200"/>
+    <line x1="75" y1="330" x2="200" y2="260"/>
+    <line x1="75" y1="330" x2="200" y2="320"/>
+  </g>
+
+  <!-- Active connections (highlighted path) -->
+  <g stroke="#A78BFA" stroke-width="1.5" stroke-opacity=".55" fill="none">
+    <line x1="75" y1="170" x2="200" y2="200"/>
+    <line x1="200" y1="200" x2="310" y2="170"/>
+    <line x1="310" y1="170" x2="415" y2="200"/>
+  </g>
+  <g stroke="#C4B5FD" stroke-width="2.5" stroke-opacity=".8" fill="none">
+    <line x1="75" y1="250" x2="200" y2="200"/>
+    <line x1="200" y1="200" x2="310" y2="240"/>
+    <line x1="310" y1="240" x2="415" y2="200"/>
+  </g>
+
+  <!-- Connections layer 2→3 -->
+  <g stroke="#7C3AED" stroke-width=".6" stroke-opacity=".1" fill="none">
+    <line x1="200" y1="80"  x2="310" y2="100"/>
+    <line x1="200" y1="80"  x2="310" y2="170"/>
+    <line x1="200" y1="80"  x2="310" y2="240"/>
+    <line x1="200" y1="80"  x2="310" y2="310"/>
+    <line x1="200" y1="140" x2="310" y2="100"/>
+    <line x1="200" y1="140" x2="310" y2="170"/>
+    <line x1="200" y1="140" x2="310" y2="240"/>
+    <line x1="200" y1="140" x2="310" y2="310"/>
+    <line x1="200" y1="260" x2="310" y2="100"/>
+    <line x1="200" y1="260" x2="310" y2="170"/>
+    <line x1="200" y1="260" x2="310" y2="240"/>
+    <line x1="200" y1="260" x2="310" y2="310"/>
+    <line x1="200" y1="320" x2="310" y2="100"/>
+    <line x1="200" y1="320" x2="310" y2="170"/>
+    <line x1="200" y1="320" x2="310" y2="240"/>
+    <line x1="200" y1="320" x2="310" y2="310"/>
+  </g>
+
+  <!-- Connections layer 3→output -->
+  <g stroke="#7C3AED" stroke-width=".6" stroke-opacity=".12" fill="none">
+    <line x1="310" y1="100" x2="415" y2="140"/>
+    <line x1="310" y1="100" x2="415" y2="200"/>
+    <line x1="310" y1="100" x2="415" y2="260"/>
+    <line x1="310" y1="170" x2="415" y2="140"/>
+    <line x1="310" y1="170" x2="415" y2="200"/>
+    <line x1="310" y1="170" x2="415" y2="260"/>
+    <line x1="310" y1="240" x2="415" y2="140"/>
+    <line x1="310" y1="240" x2="415" y2="200"/>
+    <line x1="310" y1="240" x2="415" y2="260"/>
+    <line x1="310" y1="310" x2="415" y2="140"/>
+    <line x1="310" y1="310" x2="415" y2="200"/>
+    <line x1="310" y1="310" x2="415" y2="260"/>
+  </g>
+
+  <!-- Layer 1: Input nodes -->
+  <circle cx="75" cy="90"  r="12" fill="url(#nodeGrad2)" opacity=".7"/>
+  <circle cx="75" cy="170" r="14" fill="url(#nodeGrad)" filter="url(#nodeglow)"/>
+  <circle cx="75" cy="250" r="14" fill="url(#nodeGrad)" filter="url(#nodeglow)"/>
+  <circle cx="75" cy="330" r="12" fill="url(#nodeGrad2)" opacity=".7"/>
+
+  <!-- Layer 2: Hidden 1 -->
+  <circle cx="200" cy="80"  r="11" fill="url(#nodeGrad2)" opacity=".6"/>
+  <circle cx="200" cy="140" r="12" fill="url(#nodeGrad2)" opacity=".75"/>
+  <circle cx="200" cy="200" r="16" fill="url(#nodeGrad)" filter="url(#nodeglow)"/>
+  <circle cx="200" cy="260" r="13" fill="url(#nodeGrad2)" opacity=".8"/>
+  <circle cx="200" cy="320" r="11" fill="url(#nodeGrad2)" opacity=".6"/>
+
+  <!-- Layer 3: Hidden 2 -->
+  <circle cx="310" cy="100" r="11" fill="url(#nodeGrad2)" opacity=".65"/>
+  <circle cx="310" cy="170" r="15" fill="url(#nodeGrad)" filter="url(#nodeglow)"/>
+  <circle cx="310" cy="240" r="15" fill="url(#nodeGrad)" filter="url(#nodeglow)"/>
+  <circle cx="310" cy="310" r="11" fill="url(#nodeGrad2)" opacity=".65"/>
+
+  <!-- Output nodes -->
+  <circle cx="415" cy="140" r="12" fill="url(#nodeGrad2)" opacity=".7"/>
+  <circle cx="415" cy="200" r="16" fill="url(#nodeGrad)" filter="url(#softglow)"/>
+  <circle cx="415" cy="260" r="12" fill="url(#nodeGrad2)" opacity=".7"/>
+
+  <!-- Output label -->
+  <rect x="373" y="182" width="84" height="36" rx="8" fill="#7C3AED" opacity=".15" stroke="#A78BFA" stroke-width=".8" stroke-opacity=".4"/>
+  <text x="415" y="200" text-anchor="middle" dominant-baseline="middle" font-family="'DM Mono', monospace" font-size="10" fill="#A78BFA" font-weight="500">Classifié</text>
+
+  <!-- Accuracy badge -->
+  <rect x="32" y="355" width="110" height="48" rx="10" fill="#EDE9FE" stroke="#C4B5FD" stroke-width=".8"/>
+  <text x="87" y="376" text-anchor="middle" font-family="'Syne', sans-serif" font-size="18" font-weight="800" fill="#7C3AED">86.4%</text>
+  <text x="87" y="392" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="9" fill="#3730A3">Accuracy</text>
+
+  <rect x="160" y="355" width="110" height="48" rx="10" fill="#EDE9FE" stroke="#C4B5FD" stroke-width=".8"/>
+  <text x="215" y="376" text-anchor="middle" font-family="'Syne', sans-serif" font-size="18" font-weight="800" fill="#7C3AED">2.1×</text>
+  <text x="215" y="392" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="9" fill="#3730A3">Plus rapide</text>
+
+  <rect x="288" y="355" width="110" height="48" rx="10" fill="#EDE9FE" stroke="#C4B5FD" stroke-width=".8"/>
+  <text x="343" y="376" text-anchor="middle" font-family="'Syne', sans-serif" font-size="18" font-weight="800" fill="#7C3AED">0.6B</text>
+  <text x="343" y="392" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="9" fill="#3730A3">Paramètres</text>
+</svg>
