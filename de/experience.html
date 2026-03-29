@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="de.css"/>
 </head>
 <body>
-
 <nav class="nav">
   <div class="nav-inner">
     <a class="nav-avatar" href="index.html"><img src="../assets/mansour_1.jpg" alt="Mansour"/></a>
@@ -26,83 +25,81 @@
     </div>
   </div>
 </nav>
-
 <section class="page-section">
   <div class="container">
     <p class="section-label" data-fr="Expérience professionnelle" data-en="Professional experience">Expérience professionnelle</p>
     <h1 class="section-title" data-fr="Mes missions" data-en="My assignments">Mes missions</h1>
-    <p class="section-sub" data-fr="Quatre ans d'expériences entre conseil, recherche académique et industrie — toujours avec des données réelles et des enjeux concrets." data-en="Four years of experience spanning consulting, academic research and industry — always with real data and concrete stakes.">Quatre ans d'expériences entre conseil, recherche académique et industrie — toujours avec des données réelles et des enjeux concrets.</p>
-
+    <p class="section-sub" data-fr="Des pipelines ETL Azure aux agents IA orchestrés — des expériences concrètes d'industrialisation de la donnée bout en bout." data-en="From Azure ETL pipelines to orchestrated AI agents — concrete end-to-end data industrialisation experience.">Des pipelines ETL Azure aux agents IA orchestrés — des expériences concrètes d'industrialisation de la donnée bout en bout.</p>
     <div class="exp-list">
 
-
-      <!-- Little John -->
+      <!-- 1. Little John — Data Engineer -->
       <div class="exp-card reveal">
         <img class="exp-logo dark-bg" src="../assets/logo_littlejohn.jpg" alt="Little John"/>
         <div class="exp-body">
           <div class="exp-top">
             <div class="exp-org">Little John</div>
-            <span class="exp-period" data-fr="Avr. 2025 — Présent" data-en="Apr. 2025 — Present">Avr. 2025 — Présent</span>
+            <span class="exp-period" data-fr="Avr. 2025 — Présent · CDI" data-en="Apr. 2025 — Present · Permanent">Avr. 2025 — Présent · CDI</span>
           </div>
-          <div class="exp-role" data-fr="Data Scientist — Modélisation statistique · CDI (stage → CDI)" data-en="Data Scientist — Statistical Modelling · Permanent (intern → permanent)">Data Scientist — Modélisation statistique · CDI (stage → CDI)</div>
-          <p class="exp-desc" data-fr="Application des méthodes statistiques en contexte industriel au sein d'une insurtech — sélection et validation de modèles, contrôle qualité des données, documentation analytique." data-en="Applying statistical methods in an industrial setting within an insurtech — model selection and validation, data quality control, analytical documentation.">Application des méthodes statistiques en contexte industriel — sélection de modèles, validation croisée, documentation et reproductibilité.</p>
+          <div class="exp-role" data-fr="Data & ML Engineer — Pipelines et infrastructure IA" data-en="Data & ML Engineer — Pipelines and AI Infrastructure">Data &amp; ML Engineer — Pipelines et infrastructure IA</div>
+          <p class="exp-desc" data-fr="Insurtech automatisant les workflows documentaires des courtiers d'assurance via l'IA. Recruté en stage ENSAI pour concevoir l'infrastructure data end-to-end, puis embauché en CDI." data-en="Insurtech automating insurance brokers' document workflows through AI. Hired as ENSAI intern to design the end-to-end data infrastructure, then converted to permanent.">Insurtech automatisant les workflows documentaires des courtiers via l'IA. Recruté en stage ENSAI pour concevoir l'infrastructure data end-to-end, puis CDI.</p>
           <ul class="exp-bullets">
-            <li data-fr="Sélection et évaluation comparative de modèles de classification (validation croisée, analyse par classe)" data-en="Comparative model selection and evaluation (cross-validation, per-class analysis)">Sélection et évaluation comparative de modèles de classification</li>
-            <li data-fr="Contrôle qualité des données : validation des schémas, détection d'anomalies, documentation des traitements" data-en="Data quality control: schema validation, anomaly detection, treatment documentation">Contrôle qualité, détection d'anomalies, documentation des traitements</li>
-            <li data-fr="Traduction des besoins métier en spécifications analytiques ; collaboration avec des équipes non-techniques" data-en="Translated business needs into analytical specs; collaboration with non-technical teams">Traduction des besoins métier en spécifications analytiques</li>
+            <li><strong data-fr="Pipeline ETL end-to-end :" data-en="End-to-end ETL pipeline:">Pipeline ETL end-to-end :</strong> <span data-fr="ingestion multi-sources (PDF, images, Excel, emails) via Azure Document Intelligence (OCR) → classification → extraction → payload JSON stocké en Azure Blob Storage" data-en="multi-source ingestion (PDF, images, Excel, emails) via Azure Document Intelligence (OCR) → classification → extraction → JSON payload stored in Azure Blob Storage">ingestion multi-sources via Azure Doc. Intelligence → extraction → Azure Blob Storage — <strong>80% des tâches manuelles automatisées</strong></span></li>
+            <li><strong data-fr="Orchestration Ray :" data-en="Ray orchestration:">Orchestration Ray :</strong> <span data-fr="parallélisation des agents IA via Ray, services ML exposés avec Ray Serve — de 1 semaine à moins d'1 heure de traitement (>80% de gain)" data-en="AI agent parallelisation via Ray, ML services exposed with Ray Serve — from 1 week to under 1 hour (>80% gain)">agents parallèles via Ray, services ML sur Ray Serve — <strong>de 1 semaine à moins d'1 heure (&gt;80% de gain)</strong></span></li>
+            <li><strong>Vector Store / RAG :</strong> <span data-fr="ChromaDB + embeddings OpenAI pour recherche sémantique dans les documents — fallback multi-modèles (GPT-4o-mini / Mistral / Groq)" data-en="ChromaDB + OpenAI embeddings for semantic document search — multi-model fallback (GPT-4o-mini / Mistral / Groq)">ChromaDB + embeddings OpenAI — fallback multi-modèles</span></li>
+            <li><strong>Fine-tuning SLM :</strong> <span data-fr="Qwen3-0.6B pour classification documentaire — accuracy 86,4% vs 74,1% GPT-4o-mini, inférence 2× plus rapide" data-en="Qwen3-0.6B for document classification — accuracy 86.4% vs 74.1% GPT-4o-mini, inference 2× faster">Qwen3-0.6B — 86,4% accuracy vs 74,1% GPT-4o-mini, inférence 2× plus rapide</span></li>
+            <li><strong>Industrialisation :</strong> Docker + CI/CD, FastAPI, Git, Logfire, RGPD</li>
           </ul>
           <div class="exp-tags">
-            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Git</span>
-            <span class="tag" data-fr="Assurance" data-en="Insurance">Assurance</span><span class="tag">Insurtech</span>
+            <span class="tag">Python</span><span class="tag">Azure Blob Storage</span><span class="tag">Azure Doc. Intelligence</span>
+            <span class="tag">ChromaDB</span><span class="tag">Ray</span><span class="tag">Pydantic AI</span>
+            <span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">FastAPI</span><span class="tag">PySpark</span>
           </div>
         </div>
       </div>
 
-      <!-- CREST -->
+      <!-- 2. CREST -->
       <div class="exp-card reveal">
         <img class="exp-logo dark-bg" src="../assets/logo_crest.png" alt="CREST"/>
         <div class="exp-body">
           <div class="exp-top">
             <div class="exp-org">CREST — ENSAI</div>
-            <span class="exp-period" data-fr="Juil. — Août 2024" data-en="Jul. — Aug. 2024">Juil. — Août 2024</span>
+            <span class="exp-period" data-fr="Juil. — Août 2024 · 2 mois" data-en="Jul. — Aug. 2024 · 2 months">Juil. — Août 2024</span>
           </div>
-          <div class="exp-role" data-fr="Stagiaire Recherche — Économétrie & NLP" data-en="Research Intern — Econometrics & NLP">Stagiaire Recherche — Économétrie & NLP</div>
-          <p class="exp-desc" data-fr="Analyse de l'évolution de l'offre de compétences des développeurs informatiques à partir des enquêtes Stack Overflow (2017-2023)." data-en="Analysis of the evolution of software developers' skill supply using Stack Overflow survey data (2017–2023).">Analyse de l'évolution de l'offre de compétences des développeurs à partir des enquêtes Stack Overflow.</p>
+          <div class="exp-role" data-fr="Stagiaire Recherche — Data & NLP" data-en="Research Intern — Data & NLP">Stagiaire Recherche — Data &amp; NLP</div>
+          <p class="exp-desc" data-fr="Pipeline NLP sur les données massives des enquêtes Stack Overflow (2017–2023) pour analyser l'évolution de l'offre de compétences des développeurs." data-en="NLP pipeline on large-scale Stack Overflow survey data (2017–2023) to analyse the evolution of developer skill supply.">Pipeline NLP sur données massives Stack Overflow — analyse de l'offre de compétences des développeurs.</p>
           <ul class="exp-bullets">
-            <li data-fr="Constitution d'une base longitudinale et application de LDA pour classifier les compétences déclarées" data-en="Built a longitudinal database and applied LDA to classify self-reported skills">Constitution d'une base longitudinale — LDA pour classifier les compétences</li>
-            <li data-fr="Modélisation économétrique : relation compétences / salaires (MCO, effets fixes)" data-en="Econometric modelling: skills / wages relationship (OLS, fixed effects)">Modélisation économétrique compétences/salaires (MCO, effets fixes)</li>
-            <li data-fr="Projet noté meilleure note de promotion pour rigueur méthodologique" data-en="Project awarded highest grade of the cohort for methodological rigour">🏆 Meilleure note de promotion</li>
+            <li data-fr="Traitement de données massives : pipeline NLP complet (preprocessing, tokenisation, LDA)" data-en="Large-scale data processing: full NLP pipeline (preprocessing, tokenisation, LDA)">Traitement de données massives — pipeline NLP complet (preprocessing, tokenisation, LDA)</li>
+            <li data-fr="Feature engineering, évaluation croisée, workflows reproductibles (Git)" data-en="Feature engineering, cross-validation, reproducible workflows (Git)">Feature engineering, cross-validation, workflows reproductibles</li>
+            <li>🏆 <span data-fr="Meilleure note de promotion" data-en="Highest grade of the cohort">Meilleure note de promotion</span></li>
           </ul>
           <div class="exp-tags">
-            <span class="tag">Python</span><span class="tag">NLP / LDA</span><span class="tag">Stata</span>
-            <span class="tag" data-fr="Économie du travail" data-en="Labour economics">Économie du travail</span>
+            <span class="tag">Python</span><span class="tag">NLP / LDA</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Git</span>
           </div>
         </div>
       </div>
 
-      <!-- ANSD -->
+      <!-- 3. ANSD -->
       <div class="exp-card reveal">
         <img class="exp-logo" src="../assets/logo_ansd.png" alt="ANSD"/>
         <div class="exp-body">
           <div class="exp-top">
             <div class="exp-org">ANSD — Agence Nationale de la Statistique et de la Démographie</div>
-            <span class="exp-period" data-fr="Sept. 2019 — Oct. 2021" data-en="Sep. 2019 — Oct. 2021">Sept. 2019 — Oct. 2021</span>
+            <span class="exp-period" data-fr="Sept. 2019 — Oct. 2021 · 2 ans" data-en="Sep. 2019 — Oct. 2021 · 2 years">Sept. 2019 — Oct. 2021</span>
           </div>
           <div class="exp-role" data-fr="Chargé d'études statistiques — Développeur Plateforme" data-en="Statistical Studies Officer — Platform Developer">Chargé d'études statistiques — Développeur Plateforme</div>
-          <p class="exp-desc" data-fr="Production et exploitation de données statistiques administratives au sein du principal producteur de statistiques officielles du Sénégal." data-en="Production and exploitation of administrative statistical data within Senegal's main official statistics producer.">Production et exploitation de données statistiques administratives au sein du principal producteur de statistiques officielles du Sénégal.</p>
+          <p class="exp-desc" data-fr="Développement et gestion d'une plateforme interne de gestion des recrutements et contrats au sein du principal producteur de statistiques officielles du Sénégal." data-en="Development and management of an internal recruitment and contract management platform at Senegal's main official statistics producer.">Plateforme interne RH/recrutements et exploitation de bases administratives volumineuses.</p>
           <ul class="exp-bullets">
-            <li data-fr="+30% d'efficacité des processus grâce au développement d'une plateforme RH/recrutements" data-en="+30% process efficiency through an HR/recruitment platform">+30% d'efficacité — développement plateforme RH/recrutements</li>
-            <li data-fr="Exploitation et structuration de bases administratives volumineuses" data-en="Exploitation and structuring of large administrative databases">Exploitation de bases administratives volumineuses</li>
-            <li data-fr="Construction d'indicateurs statistiques et tableaux de bord institutionnels" data-en="Statistical indicators and institutional dashboards">Indicateurs statistiques et tableaux de bord institutionnels</li>
+            <li data-fr="+30% d'efficacité des processus via développement et déploiement d'une plateforme RH/recrutements" data-en="+30% process efficiency via HR/recruitment platform development and deployment">+30% d'efficacité — plateforme RH/recrutements développée et déployée</li>
+            <li data-fr="Exploitation et structuration de bases de données administratives volumineuses" data-en="Exploitation and structuring of large administrative databases">Exploitation et structuration de bases administratives volumineuses</li>
+            <li data-fr="Automatisation de traitements et production d'indicateurs statistiques" data-en="Processing automation and statistical indicator production">Automatisation de traitements et indicateurs statistiques</li>
           </ul>
           <div class="exp-tags">
-            <span class="tag">Stata</span><span class="tag">R</span><span class="tag">Python</span><span class="tag">SQL</span>
-            <span class="tag" data-fr="Statistique publique" data-en="Official statistics">Statistique publique</span>
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">Stata</span>
           </div>
         </div>
       </div>
 
-      <!-- STATINFO -->
+      <!-- 4. STATINFO -->
       <div class="exp-card reveal">
         <img class="exp-logo dark-bg" src="../assets/logo_statinfo.png" alt="STATINFO"/>
         <div class="exp-body">
@@ -111,49 +108,18 @@
             <span class="exp-period" data-fr="Jan. — Juil. 2021" data-en="Jan. — Jul. 2021">Jan. — Juil. 2021</span>
           </div>
           <div class="exp-role" data-fr="Consultant en statistiques" data-en="Statistics Consultant">Consultant en statistiques</div>
-          <p class="exp-desc" data-fr="Conseil en statistiques appliquées pour clients institutionnels et internationaux au Sénégal (ONG, bailleurs de fonds, institutions publiques)." data-en="Statistical consulting for institutional and international clients in Senegal (NGOs, donors, public institutions).">Conseil pour clients institutionnels et internationaux — ONG, bailleurs de fonds, institutions publiques.</p>
+          <p class="exp-desc" data-fr="Conseil en statistiques appliquées pour clients institutionnels et internationaux au Sénégal." data-en="Statistical consulting for institutional and international clients in Senegal.">Conseil pour clients institutionnels et internationaux.</p>
           <ul class="exp-bullets">
-            <li data-fr="Études d'impact : spécification et estimation de modèles économétriques (MCO, panel, diff-in-diff)" data-en="Impact studies: OLS, panel data, diff-in-diff models">Études d'impact — modèles MCO, panel, diff-in-diff</li>
-            <li data-fr="Collecte de données terrain, nettoyage et structuration de bases d'enquêtes" data-en="Field data collection, survey cleaning and structuring">Collecte terrain, nettoyage et structuration de bases d'enquêtes</li>
-            <li data-fr="Rédaction de notes techniques pour clients institutionnels et internationaux" data-en="Technical reports for institutional and international clients">Notes techniques pour clients institutionnels</li>
+            <li data-fr="Analyses économétriques pour études d'impact (données panel, régression)" data-en="Econometric analyses for impact studies (panel data, regression)">Études d'impact — modèles panel, régression</li>
+            <li data-fr="Nettoyage et structuration de bases d'enquêtes terrain" data-en="Survey data cleaning and structuring">Nettoyage et structuration de bases d'enquêtes</li>
           </ul>
           <div class="exp-tags">
-            <span class="tag">Stata</span><span class="tag">R</span><span class="tag">Python</span>
-            <span class="tag" data-fr="Évaluation d'impact" data-en="Impact evaluation">Évaluation d'impact</span>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Recherche Ohio State -->
-      <div class="exp-card reveal">
-        <img class="exp-logo" src="../assets/logo_ensae.png" alt="Recherche"/>
-        <div class="exp-body">
-          <div class="exp-top">
-            <div class="exp-org" data-fr="Recherche — Co-auteur (Working Paper)" data-en="Research — Co-author (Working Paper)">Recherche — Co-auteur (Working Paper)</div>
-            <span class="exp-period">2023 — Présent</span>
-          </div>
-          <div class="exp-role" data-fr="Collaboration avec Prof. Abdoul Sam (Ohio State Univ.) & Dr. Fofana (ENSAE Dakar)" data-en="Collaboration with Prof. Abdoul Sam (Ohio State Univ.) & Dr. Fofana (ENSAE Dakar)">Collaboration avec Prof. Abdoul Sam (Ohio State Univ.) & Dr. Fofana (ENSAE Dakar)</div>
-          <p class="exp-desc" data-fr="Estimation des comportements de consommation des ménages sénégalais pour éclairer les débats sur les politiques fiscales et de redistribution (TVA, subventions alimentaires, protection sociale)." data-en="Estimating Senegalese household consumption behaviour to inform debates on fiscal and redistribution policies (VAT, food subsidies, social protection).">Estimation des comportements de consommation des ménages sénégalais pour éclairer les débats sur les politiques fiscales et de redistribution (TVA, subventions alimentaires, protection sociale).</p>
-          <ul class="exp-bullets">
-            <li data-fr="Exploitation des Enquêtes Harmonisées sur les Conditions de Vie des Ménages (EHCVM) 2018 & 2022 — bases multi-pays UEMOA" data-en="Exploitation of Harmonised Household Living Conditions Surveys (EHCVM) 2018 & 2022 — multi-country WAEMU databases">Exploitation des EHCVM 2018 & 2022 — bases multi-pays UEMOA, représentatives au niveau national</li>
-            <li data-fr="Spécification et estimation du modèle Almost Ideal Demand System (AIDS) : système SUR, tests de symétrie/homogénéité, élasticités de Slutsky" data-en="Specification and estimation of the Almost Ideal Demand System (AIDS): SUR system, symmetry/homogeneity tests, Slutsky elasticities">Spécification et estimation du modèle AIDS : système SUR, tests de symétrie, élasticités-prix compensées et non compensées</li>
-            <li data-fr="Analyse distributive des élasticités par quintile de revenu : identification des ménages les plus vulnérables aux chocs alimentaires" data-en="Distributional analysis of elasticities by income quintile: identification of households most vulnerable to food price shocks">Analyse distributive par quintile de revenu — ménages les plus vulnérables aux chocs de prix alimentaires</li>
-            <li data-fr="Estimation des effets de bien-être des réformes de prix sur la pauvreté et les inégalités" data-en="Estimation of welfare effects of price reforms on poverty and inequality">Effets de bien-être des réformes de prix sur la pauvreté et les inégalités</li>
-            <li data-fr="Working paper en cours de finalisation pour soumission en revue de développement économique" data-en="Working paper being finalised for submission to a development economics journal">Working paper en cours de finalisation pour soumission en revue de développement économique</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag">Stata</span><span class="tag">R</span><span class="tag">Python</span>
-            <span class="tag">Modèle AIDS</span><span class="tag">SUR</span>
-            <span class="tag" data-fr="Économie du développement" data-en="Development economics">Économie du développement</span>
-            <span class="tag" data-fr="Pauvreté" data-en="Poverty">Pauvreté</span>
+            <span class="tag">Stata</span><span class="tag">R</span><span class="tag">Python</span><span class="tag">SQL</span>
           </div>
         </div>
       </div>
 
     </div>
-
-    <!-- Photo en action -->
     <div class="reveal" style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
       <div style="border-radius:var(--r-lg); overflow:hidden; height:260px;">
         <img src="../assets/mansour_3.jpg" alt="Présentation" style="width:100%; height:100%; object-fit:cover; object-position:top;"/>
@@ -162,10 +128,8 @@
         <img src="../assets/mansour_4.jpg" alt="Conférence" style="width:100%; height:100%; object-fit:cover; object-position:top;"/>
       </div>
     </div>
-
   </div>
 </section>
-
 <script src="../js/main.js"></script>
 </body>
 </html>
