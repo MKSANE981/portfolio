@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr" data-dark="false">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Compétences — DS & ML Engineer</title>
+<link rel="stylesheet" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/nav.css"/>
+<link rel="stylesheet" href="ds.css"/>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-avatar" href="index.html"><img src="../assets/mansour_1.jpg" alt="Mansour"/></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html"><span data-fr="Qui suis-je" data-en="About me">Qui suis-je</span></a>
+      <a class="nav-link" href="parcours.html"><span data-fr="Parcours" data-en="Education">Parcours</span></a>
+      <a class="nav-link" href="experience.html"><span data-fr="Expérience" data-en="Experience">Expérience</span></a>
+      <a class="nav-link active" href="competences.html"><span data-fr="Compétences" data-en="Skills">Compétences</span></a>
+      <a class="nav-link" href="ambitions.html"><span data-fr="Ce que je cherche" data-en="What I seek">Ce que je cherche</span></a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn" id="btn-lang">EN</button>
+      <button class="nav-btn" id="btn-dark">◐</button>
+    </div>
+  </div>
+</nav>
+<section class="page-section">
+  <div class="container">
+    <p class="section-label" data-fr="Boîte à outils" data-en="Toolkit">Boîte à outils</p>
+    <h1 class="section-title" data-fr="Compétences techniques" data-en="Technical skills">Compétences techniques</h1>
+    <p class="section-sub" data-fr="Modélisation prédictive, expérimentation causale et MLOps — la combinaison ML Engineering + Data Science qui fait la différence en production." data-en="Predictive modelling, causal experimentation and MLOps — the ML Engineering + Data Science combination that makes the difference in production.">Modélisation prédictive, expérimentation causale et MLOps — la combinaison qui fait la différence en production.</p>
+
+    <!-- ML & Data Science -->
+    <div class="skills-section" style="margin-top:48px;">
+      <div class="skills-section-title" data-fr="Machine Learning & Data Science" data-en="Machine Learning & Data Science">Machine Learning & Data Science</div>
+      <div class="skills-grid">
+        <div class="skill-item reveal"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:95%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Scikit-learn</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Modèles prédictifs (appétence, churn, lookalike)" data-en="Predictive models (appetite, churn, lookalike)">Modèles prédictifs (appétence, churn, lookalike)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">PyTorch / HuggingFace</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Fine-tuning SFT (SLM/LLM)" data-en="SFT Fine-tuning (SLM/LLM)">Fine-tuning SFT (SLM/LLM)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:86%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">RAG / ChromaDB</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:87%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">NLP / LDA</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Pydantic AI / OpenAI API</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Expérimentation & Mesure — clé pour Valiuz -->
+    <div class="skills-section">
+      <div class="skills-section-title" data-fr="Expérimentation & Mesure causale" data-en="Experimentation & Causal measurement">Expérimentation & Mesure causale</div>
+      <div class="skills-grid">
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Évaluation d'impact (DID, RDD)" data-en="Impact evaluation (DID, RDD)">Évaluation d'impact (DID, RDD)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Protocoles A/B test & test/learn" data-en="A/B test & test/learn protocols">Protocoles A/B test & test/learn</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Inférence causale" data-en="Causal inference">Inférence causale</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Modèles de lift & incrémentalité" data-en="Lift models & incrementality">Modèles de lift & incrémentalité</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:78%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Régression (OLS, GLS, IV, panel)" data-en="Regression (OLS, GLS, IV, panel)">Régression (OLS, GLS, IV, panel)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Probit / Logit</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:88%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Modèles de demande (AIDS / SUR)" data-en="Demand models (AIDS / SUR)">Modèles de demande (AIDS / SUR)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:84%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Statistique bayésienne" data-en="Bayesian statistics">Statistique bayésienne</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Big Data & MLOps -->
+    <div class="skills-section">
+      <div class="skills-section-title" data-fr="Big Data & MLOps" data-en="Big Data & MLOps">Big Data & MLOps</div>
+      <div class="skills-grid">
+        <div class="skill-item reveal"><span class="skill-name">PySpark</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Databricks <span style="font-size:11px;opacity:.6" data-fr="(montée en compétence)" data-en="(upskilling)">(montée en compétence)</span></span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:45%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Ray / Ray Serve</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:83%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Docker + CI/CD</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">FastAPI</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Azure Blob / Doc. Intelligence</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Git / GitHub</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Autres outils -->
+    <div class="skills-section">
+      <div class="skills-section-title" data-fr="Autres langages & outils" data-en="Other languages & tools">Autres langages & outils</div>
+      <div class="skills-grid">
+        <div class="skill-item reveal"><span class="skill-name">Stata</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">R</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Pandas / NumPy</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name">Scikit-learn</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:83%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Langues -->
+    <div class="skills-section">
+      <div class="skills-section-title" data-fr="Langues" data-en="Languages">Langues</div>
+      <div class="skills-grid">
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Français — Natif" data-en="French — Native">Français — Natif</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:100%"></div></div></div>
+        <div class="skill-item reveal"><span class="skill-name" data-fr="Anglais — B2 (TOEIC 870)" data-en="English — B2 (TOEIC 870)">Anglais — B2 (TOEIC 870)</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="../js/main.js"></script>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.skill-bar').forEach(b => b.classList.add('animated')); obs.unobserve(e.target); }});
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-item').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
