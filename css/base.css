@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════
+   BASE.CSS — Design System
+   Portfolio Mansour Kama Sane
+═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Tokens ── */
+:root {
+  --bg:        #F9F8F5;
+  --bg2:       #F0EDE6;
+  --bg3:       #E5E0D8;
+  --card:      #FFFFFF;
+  --text:      #18170F;
+  --text2:     #5C5A52;
+  --text3:     #9A9890;
+  --border:    rgba(24,23,15,.08);
+  --border2:   rgba(24,23,15,.15);
+
+  --accent:    #0E8A9E;
+  --accent2:   #0D4C57;
+  --accentbg:  rgba(14,138,158,.08);
+
+  --gap-sm:  12px;
+  --gap-md:  24px;
+  --gap-lg:  48px;
+  --gap-xl:  80px;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+
+  --t-fast: .15s ease;
+  --t-med:  .25s ease;
+  --t-slow: .4s cubic-bezier(.34,1.2,.64,1);
+
+  --nav-h: 64px;
+}
+
+[data-dark="true"] {
+  --bg:    #111008;
+  --bg2:   #1A190F;
+  --bg3:   #242318;
+  --card:  #1E1D13;
+  --text:  #F0EDE6;
+  --text2: #A8A59D;
+  --text3: #6A6860;
+  --border:  rgba(240,237,230,.07);
+  --border2: rgba(240,237,230,.13);
+  --accentbg: rgba(14,138,158,.12);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  transition: background var(--t-med), color var(--t-med);
+  padding-top: var(--nav-h);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Container ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--gap-md);
+}
+
+/* ── Section title ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px;
+  color: var(--text2);
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+/* ── Tag / chip ── */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--accentbg);
+  color: var(--accent2);
+  border: 1px solid rgba(14,138,158,.15);
+}
+[data-dark="true"] .tag { color: var(--accent); border-color: rgba(14,138,158,.25); }
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--gap-md);
+  transition: box-shadow var(--t-med), transform var(--t-med);
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,.07);
+  transform: translateY(-2px);
+}
+
+/* ── Reveal animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Page section spacing ── */
+.page-section {
+  padding: 80px 0;
+}
+
+/* ── Cursor ── */
+.cursor-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px; height: 9px;
+  background: #18170F;
+  transition: width .12s ease, height .12s ease;
+}
+[data-dark="true"] .cursor-dot { background: #F0EDE6; }
+.cursor-dot.hover { width: 13px; height: 13px; }
+* { cursor: none !important; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--t-med);
+}
+.btn-fill {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-fill:hover { background: var(--accent2); }
+.btn-outline {
+  border: 1.5px solid var(--border2);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
