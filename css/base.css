@@ -153,7 +153,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 [data-dark="true"] .cursor-dot { background: #F0EDE6; }
 .cursor-dot.hover { width: 13px; height: 13px; }
-* { cursor: none !important; }
+html.custom-cursor * { cursor: none !important; }
 
 /* ── Buttons ── */
 .btn {

@@ -53,6 +53,7 @@ function initCursor() {
   const dot = document.createElement('div');
   dot.className = 'cursor-dot';
   document.body.appendChild(dot);
+  document.documentElement.classList.add('custom-cursor');
   document.addEventListener('mousemove', e => {
     dot.style.left = e.clientX + 'px';
     dot.style.top  = e.clientY + 'px';
