@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr" data-dark="false">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mansour Kama Sane — Portfolio</title>
+<meta name="description" content="Portfolio de Mansour Kama Sane — Data Scientist, ML Engineer, Data Engineer et Économiste quantitatif. Diplômé ENSAI (Rennes) et ENSAE (Dakar)."/>
+<link rel="stylesheet" href="css/base.css"/>
+<style>
+body { padding-top: 0; }
+
+.portal-controls {
+  position: fixed;
+  top: 16px; right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.portal-hero {
+  text-align: center;
+  padding: 100px 24px 56px;
+}
+.portal-avatar {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid var(--border2);
+  margin: 0 auto 24px;
+  display: block;
+}
+.portal-name {
+  font-size: clamp(36px, 7vw, 60px);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.portal-name .accent { color: var(--accent); }
+.portal-roles {
+  font-size: 15px;
+  color: var(--text2);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.portal-schools {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.school-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 12px;
+}
+.school-chip img { width: 18px; height: 18px; object-fit: contain; }
+
+.profiles-section {
+  padding: 48px 24px 80px;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+.profiles-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.profiles-title {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.profile-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--t-med), transform var(--t-med), border-color var(--t-med);
+}
+.profile-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--t-med);
+}
+.profile-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,.09);
+  transform: translateY(-3px);
+  border-color: rgba(14,138,158,.3);
+}
+.profile-card:hover::after { opacity: 1; }
+
+.pc-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+}
+.pc-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--text);
+  line-height: 1.2;
+}
+.pc-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+  flex: 1;
+}
+.pc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.pc-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 6px;
+}
+
+.portal-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--text2);
+  transition: color var(--t-fast);
+}
+.footer-link:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="portal-controls">
+  <button class="nav-btn" id="btn-lang">EN</button>
+  <button class="nav-btn" id="btn-dark">◐</button>
+</div>
+
+<div class="portal-hero">
+  <img class="portal-avatar reveal" src="assets/mansour_1.jpg" alt="Mansour Kama Sane"/>
+  <h1 class="portal-name reveal">Mansour <span class="accent">Kama Sane</span></h1>
+  <p class="portal-roles reveal"
+     data-fr="Data Scientist · ML Engineer · Data Engineer · Économiste quantitatif"
+     data-en="Data Scientist · ML Engineer · Data Engineer · Quantitative Economist">
+    Data Scientist · ML Engineer · Data Engineer · Économiste quantitatif
+  </p>
+  <div class="portal-schools reveal">
+    <span class="school-chip">
+      <img src="assets/logo_ensai.png" alt="ENSAI"/>
+      ENSAI · Rennes
+    </span>
+    <span class="school-chip">
+      <img src="assets/logo_ensae.png" alt="ENSAE"/>
+      ENSAE · Dakar
+    </span>
+  </div>
+</div>
+
+<section class="profiles-section">
+  <p class="profiles-label" data-fr="Choisissez votre profil" data-en="Choose a profile">Choisissez votre profil</p>
+  <h2 class="profiles-title reveal"
+      data-fr="Trois angles, une même expertise"
+      data-en="Three angles, one expertise">
+    Trois angles, une même expertise
+  </h2>
+
+  <div class="profiles-grid">
+
+    <a class="profile-card reveal" href="ds/index.html">
+      <div class="pc-num">01</div>
+      <div class="pc-title" data-fr="Data Scientist & ML/AI Engineer" data-en="Data Scientist & ML/AI Engineer">Data Scientist & ML/AI Engineer</div>
+      <p class="pc-desc"
+         data-fr="Fine-tuning SLM/LLM, architecture multi-agents, expérimentation causale et MLOps — du prototype à la production."
+         data-en="SLM/LLM fine-tuning, multi-agent architecture, causal experimentation and MLOps — from prototype to production.">
+        Fine-tuning SLM/LLM, architecture multi-agents, expérimentation causale et MLOps — du prototype à la production.
+      </p>
+      <div class="pc-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">Pydantic AI</span>
+        <span class="tag">RAG</span>
+        <span class="tag">MLOps</span>
+      </div>
+      <div class="pc-cta" data-fr="Voir ce profil →" data-en="View this profile →">Voir ce profil →</div>
+    </a>
+
+    <a class="profile-card reveal" href="de/index.html">
+      <div class="pc-num">02</div>
+      <div class="pc-title" data-fr="Data Engineer" data-en="Data Engineer">Data Engineer</div>
+      <p class="pc-desc"
+         data-fr="Pipelines ETL/ELT end-to-end, orchestration Azure/AWS/GCP, architecture RAG et CI/CD — de l'ingestion à la livraison."
+         data-en="End-to-end ETL/ELT pipelines, Azure/AWS/GCP orchestration, RAG architecture and CI/CD — from ingestion to delivery.">
+        Pipelines ETL/ELT end-to-end, orchestration Azure/AWS/GCP, architecture RAG et CI/CD — de l'ingestion à la livraison.
+      </p>
+      <div class="pc-tags">
+        <span class="tag">Azure</span>
+        <span class="tag">AWS S3</span>
+        <span class="tag">PySpark</span>
+        <span class="tag">FastAPI</span>
+      </div>
+      <div class="pc-cta" data-fr="Voir ce profil →" data-en="View this profile →">Voir ce profil →</div>
+    </a>
+
+    <a class="profile-card reveal" href="eco/index.html">
+      <div class="pc-num">03</div>
+      <div class="pc-title" data-fr="Économiste quantitatif" data-en="Quantitative Economist">Économiste quantitatif</div>
+      <p class="pc-desc"
+         data-fr="Évaluation d'impact, politiques publiques, économétrie avancée (AIDS, DID, IV/2SLS) et data science appliquée au développement."
+         data-en="Impact evaluation, public policy, advanced econometrics (AIDS, DID, IV/2SLS) and data science applied to development.">
+        Évaluation d'impact, politiques publiques, économétrie avancée (AIDS, DID, IV/2SLS) et data science appliquée au développement.
+      </p>
+      <div class="pc-tags">
+        <span class="tag">Stata</span>
+        <span class="tag">R</span>
+        <span class="tag">Économétrie</span>
+        <span class="tag">Impact</span>
+      </div>
+      <div class="pc-cta" data-fr="Voir ce profil →" data-en="View this profile →">Voir ce profil →</div>
+    </a>
+
+  </div>
+</section>
+
+<footer class="portal-footer">
+  <a href="mailto:mansoursanneh98@gmail.com" class="footer-link">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    mansoursanneh98@gmail.com
+  </a>
+  <a href="https://www.linkedin.com/in/mansour-kama-sane-307549177" target="_blank" class="footer-link">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://github.com/MKSANE981" target="_blank" class="footer-link">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+    GitHub
+  </a>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

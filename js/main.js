@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScroll();
   initReveal();
   markActiveNav();
+  initHomeLink();
 });
 
 /* ── Dark mode ── */
@@ -90,4 +91,16 @@ function markActiveNav() {
       a.classList.add('active');
     }
   });
+}
+
+function initHomeLink() {
+  const navRight = document.querySelector('.nav-right');
+  if (!navRight) return;
+  const a = document.createElement('a');
+  a.href = '../index.html';
+  a.className = 'nav-btn';
+  a.title = 'Tous les profils';
+  a.style.cssText = 'text-decoration:none;font-size:15px;';
+  a.textContent = '⌂';
+  navRight.insertBefore(a, navRight.firstChild);
 }
