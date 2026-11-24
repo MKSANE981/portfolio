@@ -180,3 +180,5 @@ html.custom-cursor * { cursor: none !important; }
 /* Skill chips (replace percentage bars) */
 .chip-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 .chip-grid .tag{font-size:13.5px;padding:8px 14px}
+
+.exp-mono{display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;letter-spacing:.02em;color:var(--accent);background:var(--accentbg)}
