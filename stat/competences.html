@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr" data-dark="false">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Compétences — Data Scientist & Statisticien</title>
+<link rel="stylesheet" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/nav.css"/>
+<link rel="stylesheet" href="stat.css"/>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-avatar" href="index.html"><img src="../assets/mansour_1.jpg" alt="Mansour"/></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html"><span data-fr="Qui suis-je" data-en="About me">Qui suis-je</span></a>
+      <a class="nav-link" href="parcours.html"><span data-fr="Parcours" data-en="Education">Parcours</span></a>
+      <a class="nav-link" href="experience.html"><span data-fr="Expérience" data-en="Experience">Expérience</span></a>
+      <a class="nav-link active" href="competences.html"><span data-fr="Compétences" data-en="Skills">Compétences</span></a>
+      <a class="nav-link" href="ambitions.html"><span data-fr="Ce que je cherche" data-en="What I seek">Ce que je cherche</span></a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn" id="btn-lang">EN</button>
+      <button class="nav-btn" id="btn-dark">◐</button>
+    </div>
+  </div>
+</nav>
+<section class="page-section">
+  <div class="container">
+    <p class="section-label" data-fr="Boîte à outils" data-en="Toolkit">Boîte à outils</p>
+    <h1 class="section-title" data-fr="Compétences techniques" data-en="Technical skills">Compétences techniques</h1>
+    <p class="section-sub" data-fr="Des outils de statisticien, de R à Python, appliqués à la collecte, aux séries temporelles et à l'évaluation de modèles." data-en="A statistician's toolkit, from R to Python, applied to data collection, time series and model evaluation.">Des outils de statisticien, de R à Python, appliqués à la collecte, aux séries temporelles et à l'évaluation de modèles.</p>
+    <div class="skills-section" style="margin-top:36px;">
+      <div class="skills-section-title" data-fr="Statistique et modélisation" data-en="Statistics and modelling">Statistique et modélisation</div>
+      <div class="chip-grid"><span class="tag">Séries temporelles (SARIMA, Prophet)</span><span class="tag">Économétrie (MCO, panel, IV)</span><span class="tag">Enquêtes et collecte de données</span><span class="tag">Évaluation de modèles sur jeu de test</span><span class="tag">Tests de stationnarité</span></div>
+    </div>
+    <div class="skills-section" style="margin-top:36px;">
+      <div class="skills-section-title" data-fr="Outils" data-en="Tools">Outils</div>
+      <div class="chip-grid"><span class="tag">R</span><span class="tag">R Shiny</span><span class="tag">Python</span><span class="tag">Stata</span><span class="tag">SQL</span><span class="tag">Git / GitHub</span><span class="tag">LaTeX</span></div>
+    </div>
+    <div class="skills-section" style="margin-top:36px;">
+      <div class="skills-section-title" data-fr="Statistique officielle et terrain" data-en="Official statistics and fieldwork">Statistique officielle et terrain</div>
+      <div class="chip-grid"><span class="tag">Campagnes nationales de collecte (ANSD)</span><span class="tag">Applications de collecte</span><span class="tag">Propositions techniques</span><span class="tag">Rapports d'analyse</span></div>
+    </div>
+    <div class="skills-section" style="margin-top:36px;">
+      <div class="skills-section-title" data-fr="Machine learning" data-en="Machine learning">Machine learning</div>
+      <div class="chip-grid"><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">NLP / LDA</span><span class="tag">Fine-tuning de modèles de langage</span></div>
+    </div>
+    <div class="skills-section" style="margin-top:36px;">
+      <div class="skills-section-title" data-fr="Langues" data-en="Languages">Langues</div>
+      <div class="chip-grid"><span class="tag" data-fr="Français : langue maternelle" data-en="French: native">Français : langue maternelle</span><span class="tag" data-fr="Anglais : TOEIC 870" data-en="English: TOEIC 870">Anglais : TOEIC 870</span></div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/main.js"></script>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.skill-bar').forEach(b => b.classList.add('animated')); obs.unobserve(e.target); }});
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-item').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

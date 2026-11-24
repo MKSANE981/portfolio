@@ -176,3 +176,7 @@ html.custom-cursor * { cursor: none !important; }
   color: var(--text);
 }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Skill chips (replace percentage bars) */
+.chip-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.chip-grid .tag{font-size:13.5px;padding:8px 14px}

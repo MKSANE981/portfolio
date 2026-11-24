@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════
    ECO.CSS — Ingénieur Statisticien Économiste
-   Accent: teal #059669
+   Accent: teal #0891B2
 ═══════════════════════════════════════════ */
 
 :root {
-  --accent:   #059669;
-  --accent2:  #064E3B;
-  --accentbg: rgba(5,150,105,.09);
+  --accent:   #0891B2;
+  --accent2:  #164E63;
+  --accentbg: rgba(8,145,178,.09);
 }
 
 /* ── HERO ── */
@@ -33,7 +33,7 @@
   letter-spacing: .04em;
   background: var(--accentbg);
   color: var(--accent);
-  border: 1px solid rgba(5,150,105,.2);
+  border: 1px solid rgba(8,145,178,.2);
   margin-bottom: 20px;
 }
 .profile-badge::before {
